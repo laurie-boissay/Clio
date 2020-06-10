@@ -1,9 +1,4 @@
 classes_et_carac_associee = {
-
-	"archer/archère" : "Dextérité",
-	"archère" : "Dextérité",
-	"archer" : "Dextérité",
-	"assassin" : "Dextérité",
 	"barbare" : "Force",
 	"barde" : "Charisme",
 	"druide" : "Sagesse",
@@ -11,10 +6,6 @@ classes_et_carac_associee = {
 	"guerrier" : "Force",
 	"guerrière" : "Force",
 	"mage" : "Intelligence",
-	"moine" : "Sagesse",
-	"nécromancienne" : "Intelligence",
-	"nécromancien" : "Intelligence",
-	"nécromancien.ne" : "Intelligence",
 	"paladin" : "Charisme",
 	"paladin.e" : "Charisme",
 	"paladine" : "Charisme",
@@ -24,63 +15,45 @@ classes_et_carac_associee = {
 	"rodeuse" : "Dextérité",
 	"rodeur" : "Dextérité",
 	"rodeur/rodeuse" : "Dextérité",
-	"sorcier/sorcière" : "Intelligence",
-	"sorcier" : "Intelligence",
-	"sorcière" : "Intelligence",
 	"voleur/voleuse" : "Dextérité",
 	"voleur" : "Dextérité",
 	"voleuse" : "Dextérité",
 	}
 
 classe = [
-	"archer/archère", # 0
-	"assassin", # 1
-	"barbare", # 2
-	"barde", # 3
-	"druide", # 4
-	"guerrière/guerrier", # 5
-	"mage", # 6
-	"moine", # 7
-	"nécromancien.ne", # 8
-	"paladin.e", # 9
-	"prêtre.sse", # 10
-	"rodeur/rodeuse", # 11
-	"sorcier/sorcière", # 12
-	"voleur/voleuse", # 13
+	"barbare",
+	"barde",
+	"druide",
+	"guerrière/guerrier",
+	"mage",
+	"paladin.e",
+	"prêtre.sse",
+	"rodeur/rodeuse",
+	"voleur/voleuse", 
 	]
 
 classe_f = [
-	"archère", # 0
-	"assassin", # 1
-	"barbare", # 2
-	"barde", # 3
-	"druide", # 4
-	"guerrière", # 5
-	"mage", # 6
-	"moine", # 7
-	"nécromancienne", # 8
-	"paladine", # 9
-	"prêtresse", # 10
-	"rodeuse", # 11
-	"sorcière", # 12
-	"voleuse", # 13
+	"barbare",
+	"barde",
+	"druide", 
+	"guerrière",
+	"mage",
+	"paladine",
+	"prêtresse",
+	"rodeuse",
+	"voleuse",
 	]
 
 classe_m = [
-	"archer", # 0
-	"assassin", # 1
-	"barbare", # 2
-	"barde", # 3
-	"druide", # 4
-	"guerrier", # 5
-	"mage", # 6
-	"moine", # 7
-	"nécromancien", # 8
-	"paladin", # 9
-	"prêtre", # 10
-	"rodeur", # 11
-	"sorcier", # 12
-	"voleur", # 13
+	"barbare",
+	"barde",
+	"druide",
+	"guerrier",
+	"mage",
+	"paladin",
+	"prêtre",
+	"rodeur",
+	"voleur",
 	]
 
 carac = [
@@ -95,8 +68,179 @@ carac = [
 genre = [
 	"féminin",
 	"masculin",
-	"androgyne"
+	"androgyne",
 	]
+
+set_barbare = [
+	{
+	"hache" : [1,"Force"],
+	"hache" : [1,"Force"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"hache_2_m" : [2,"Force"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"hache" : [1,"Force"],
+	"bouclier" : [1,"Constitution"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"hache" : [1,"Force"],
+	"hache_lance" : [1,"Force"],
+	"armure" : [1,"Constitution"],
+	},
+]
+
+set_barde = [
+	{
+	"rapiere" : [1,"Charisme"],
+	"lyre" : [1,"Charisme"],
+	"vetements" : [1,"Charisme"],
+	},
+
+	{
+	"rapiere" : [1,"Charisme"],
+	"lyre" : [1,"Charisme"],
+	"armure" : [1,"Constitution"],
+	},
+]
+
+set_druide = [
+	{
+	"baton" : [2,"Sagesse"],
+	"pagne" : [1,"Sagesse"],
+	},
+
+	{
+	"griffe" : [1,"Sagesse"],
+	"griffe" : [1,"Sagesse"],
+	"pagne" : [1,"Sagesse"],
+	},
+]
+
+set_guerrier_e = [
+	{
+	"epee" : [1,"Force"],
+	"epee" : [1,"Force"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"epee_2_m" : [2,"Force"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"epee" : [1,"Force"],
+	"bouclier" : [1,"Constitution"],
+	"armure" : [1,"Constitution"],
+	},
+]
+
+set_mage = [
+	{
+	"poignard" : [1,"Intelligence"],
+	"livre_sorts" : [1,"Intelligence"],
+	"robe" : [1,"Intelligence"],
+	},
+
+	{
+	"sceptre" : [2,"Intelligence"],
+	"robe" : [1,"Intelligence"],
+	},
+]
+
+set_paladin_e = [
+	{
+	"marteau_2_m" : [2,"Charisme"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"morgenstern" : [1,"Charisme"],
+	"Bouclier" : [1,"Constitution"],
+	"armure" : [1,"Constitution"],
+	},
+]
+
+set_pretre_sse = [
+	{
+	"baton" : [2,"Sagesse"],
+	"bure" : [1,"Sagesse"],
+	},
+
+	{
+	"croix" : [1,"Sagesse"],
+	"livre_prieres" : [1,"Sagesse"],
+	"bure" : [1,"Sagesse"],
+	},
+]
+
+set_rodeur_rodeuse = [
+	{
+	"arbalète": [2,"Dextérité"],
+	"cuir" : [1,"Dextérité"],
+	},
+
+	{
+	"dague": [1,"Dextérité"],
+	"fronde": [1,"Dextérité"],
+	"cuir" : [1,"Dextérité"],
+	},
+
+	{
+	"dague": [1,"Dextérité"],
+	"dague": [1,"Dextérité"],
+	"cuir" : [1,"Dextérité"],
+	},
+
+	{
+	"dague": [1,"Dextérité"],
+	"dague": [1,"Dextérité"],
+	"armure" : [1,"Constitution"],
+	},
+]
+
+set_voleur = [
+	{
+	"katana" : [2,"Dextérité"],
+	"cuir" : [1,"Dextérité"],
+	},
+
+	{
+	"dague" : [1,"Dextérité"],
+	"dague" : [1,"Dextérité"],
+	"cuir" : [1,"Dextérité"],
+	},
+
+	{
+	"shuriken" : [1,"Dextérité"],
+	"dague" : [1,"Dextérité"],
+	"cuir" : [1,"Dextérité"],
+	},
+
+	{
+	"katana" : [2,"Dextérité"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"dague" : [1,"Dextérité"],
+	"dague" : [1,"Dextérité"],
+	"armure" : [1,"Constitution"],
+	},
+
+	{
+	"shuriken" : [1,"Dextérité"],
+	"dague" : [1,"Dextérité"],
+	"armure" : [1,"Constitution"],
+	},
+]
 
 prenoms_f = [
 	"An",
