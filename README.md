@@ -7,6 +7,8 @@ Elle sera construire sur les bases de Calliope (la muse de la poësie épique) m
 
 J'aimerai que Clio soit intelligente et puisse retenir des informations que les joueurs / joueuses tapent eux même sur Discord. Clio donnera des codes de sauvegardes aux utilisateurs / utilisatrices pour redémarrer la partie avec leur personnage et leur progression intacts après un redémarrage.
 
+/!\ Je joins une image mais elle n'est pas de moi.
+
 - elle est déjà capable d'associer un pseudo discord avec tout un personnage et un numéro de team ; 
 
 - les commandes de jeux ne sont autorisées que dans le canal choisit par le créateur de la partie ;
