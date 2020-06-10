@@ -11,13 +11,13 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 
 - elle est déjà capable d'associer un pseudo discord avec tout un personnage et un numéro de team ; 
 
-- les commandes de jeux ne sont autorisées que dans le canal choisit par le créateur de la partie ;
+- les commandes de jeux ne sont autorisées que dans le canal choisit par le créateur de la partie ; <= annulé
 
 - pour certaines commandes, elle répond seulement en message privé pour ne pas poluer le canal de discussion.
 
 10/06/20 :
 
--commandes déjà implémentées :
+- commandes déjà implémentées :
         !aide
         !nouvelle partie
         !pj
@@ -27,3 +27,5 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
         !joue
         !qui
         !1d20+5
+        
+ - ajout de set d'équipement pour toutes les catégorie de personnages.
