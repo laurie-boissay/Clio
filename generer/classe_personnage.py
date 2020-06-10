@@ -27,9 +27,6 @@ class Personnage:
 		self.team = "ERREUR"
 
 		self.classe = ""
-		self.arme_distance = ""
-		self.arme_cac = ""
-		self.armure = 0
 
 		self.carac = {
 			"Force" : 0,
@@ -39,6 +36,46 @@ class Personnage:
 			"Sagesse" : 0,
 			"Charisme" : 0,
 			}
+
+		
+		self.dague = 0 		#d
+		self.hache = 0 		#f
+		self.epee = 0		#f
+		self.poignard = 0	#i
+		self.croix = 0		#s
+		self.rapiere = 0	#ch
+		self.morgenstern = 0#ch
+		self.griffe = 0		#s
+		
+		self.fronde = 0		#d
+		self.hache_lance = 0#f
+		self.shuriken = 0	#d
+		
+		self.livre.sorts = 0#i
+		self.livre.prieres = 0#s
+		self.lyre = 0		#c
+
+		self.epee_2_m = 0	#f
+		self.hache_2_m = 0	#f
+		self.lance_2_m = 0	#f
+		self.marteau_2_m = 0#ch
+		self.katana = 0		#d
+		self.baton = 0		#s
+		self.sceptre = 0	#i
+		
+		self.arbalete = 0	#d
+
+		self.bouclier = 0	#co
+		self.armure = 0		#co
+		self.cuir = 0		#d
+		self.vetements = 0	#ch
+		self.robe = 0		#i
+		self.bure = 0		#s
+		self.pagne = 0		#s
+
+		self.vie_max = 0	#co
+		
+		self.animal = 0		#+toucher
 
 		self.commande_pj = "\n> !pj, "
 		self.commande_save = "\n> !joue"
