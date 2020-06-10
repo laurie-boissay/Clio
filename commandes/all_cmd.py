@@ -146,7 +146,7 @@ def texte_info():
     texte = [
     "Vous pensez que les gnomes ont le monopole de la technologie ?"
     "\nVous pouvez participer à mon amélioration :" 
-    "\nhttps://github.com/laurie-boissay/calliope."
+    "\nhttps://github.com/laurie-boissay/clio"
     ]
     return texte[0]
 
