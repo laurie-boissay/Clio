@@ -17,7 +17,7 @@ def all_users_cmd(message, client):
             
         if 'clio clio clio' in message.content:
             canal = message.author
-            texte = ("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7a2c53c3-a91c-4742-a605-2d3f5b3b7d74/dcwuzqk-dc6ca0af-e0e5-492f-a648-8a6a1033f844.png/v1/fill/w_752,h_1063,q_75,strp/clio__muse_of_history_by_cetrece-dcwuzqk.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS53YXRlcm1hcmsiXSwib2JqIjpbW3sicGF0aCI6Ii9mLzdhMmM1M2MzLWE5MWMtNDc0Mi1hNjA1LTJkM2Y1YjNiN2Q3NC9kY3d1enFrLWRjNmNhMGFmLWUwZTUtNDkyZi1hNjQ4LThhNmExMDMzZjg0NC5wbmciLCJ3aWR0aCI6Ijw9NzUyIiwiaGVpZ2h0IjoiPD0xMDYzIn1dXSwid21rIjp7InBhdGgiOiIvd20vN2EyYzUzYzMtYTkxYy00NzQyLWE2MDUtMmQzZjViM2I3ZDc0L2NldHJlY2UtNC5wbmciLCJvcGFjaXR5Ijo5NSwicHJvcG9ydGlvbnMiOjAuNDUsImdyYXZpdHkiOiJjZW50ZXIifX0.trd4XBs6pMf6I-7DCiOyoQ-tkXtD7ic06xWIHasOAjE")
+            texte = ("https://raw.githubusercontent.com/laurie-boissay/Clio/master/clio__muse_of_history_by_cetrece-dcwuzqk.png")
 
         elif message.content.startswith('!aide'): 
             # Renvoi un message d'aide.
@@ -49,18 +49,16 @@ def all_users_cmd(message, client):
                     texte += genre[i] + ", "
                 canal = message.author
 
-        elif message.channel.id in allowed_channels:
+        elif message.content.startswith('!joue'):
+            texte = texte_joue(message)
 
-            if message.content.startswith('!joue'):
-                texte = texte_joue(message)
+        elif message.content.startswith('!qui'):
+            texte = texte_qui(message)
 
-            elif message.content.startswith('!qui'):
-                texte = texte_qui(message)
-
-            elif message.content.startswith('!'):
-                texte = commande_des(message.content)
-                if texte != "not a cmd" :
-                    texte = str(qui_joue(message)) + " s'empare des dés : " + texte
+        elif message.content.startswith('!'):
+            texte = commande_des(message.content)
+            if texte != "not a cmd" :
+                texte = str(qui_joue(message)) + " s'empare des dés : " + texte
           
     return canal, texte
 
@@ -108,12 +106,14 @@ def texte_aide():
     "\n\n```!pj, prénom=Clio, classe=druide, genre=androgyne, team=0```"
     "Chaque joueur va générer un personnage personnalisé."
     
-    "\n\n```!joue:Clio:druide:0```"
+    "\n\n```!joue:Clio:0:3,0,3,1,3,2,druide```"
     "Tous les joueurs doivent enregistrer leur personnage suivi du numéro de team."
     "\nClio dans cet exemple est le nom de personnage et 0 est le numéro de team."
+    "\nJe génère moi même la commande de sauvegarde, il suffit de la copier-coller et valider !"
+    "\nVos noms de personnage doivent tous être différents."
 
     "\n\n```!qui```"
-    "Permet de vérifer que ton nom de perso est bien enregistré."
+    'Permet de vérifer que ton perso est bien "enregistré".'
     "\nDans cet exemple 0 est le numéro de team."           
     ]
     return texte[0]
@@ -192,12 +192,12 @@ def texte_joue(message):
 
     #Confirmation de succés.
     
-    return "Compris " + message.author.name + " tu joues " + info_de_partie[team][pseudo_player] + "."
+    return "Compris " + message.author.name + ", tu joues " + info_de_partie[team][pseudo_player] + "."
 
 
 def texte_qui(message):
     texte = "Tu joues " + qui_joue(message)
-    texte += ", un.e " + str(info_de_partie[num_team(message)][qui_joue(message)][6]) + ".\n"
+    texte += ", un.e " + str(info_de_partie[num_team(message)][qui_joue(message)][6]) + " :\n"
     texte += "Force : " + str(info_de_partie[num_team(message)][qui_joue(message)][0]) + "\n"
     texte += "Constitution : " + str(info_de_partie[num_team(message)][qui_joue(message)][1]) + "\n"
     texte += "Dextérité : " + str(info_de_partie[num_team(message)][qui_joue(message)][2]) + "\n"
