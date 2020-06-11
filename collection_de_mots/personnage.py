@@ -56,6 +56,59 @@ classe_m = [
 	"voleur",
 	]
 
+dons_par_classes = [
+	#barbare
+	{
+	"cri de ralliement" : "augmente la constitution des membres du groupe pour la durée du combat.\n(non cumulable)",
+	"insultes" : "les ennemis oublient temporairement l'existance des autres membres du groupe",
+	"cri de guerre" : "augmente la force des membres du groupe pour la durée du combat.\n(non cumulable)"
+	},
+
+	#barde
+	{
+	"marche militaire" : "augmente les dégats des membres du groupe pour la durée du combat.\n(non cumulable)",
+	"ode aux héros" : "augmente le charisme des membres du groupe pour la durée du combat.\n(non cumulable)",
+	"ballade rythmée" : "chaque ennemis doit résister à l'envie de danser pour attaquer ce tour-ci",
+	},
+
+	#druide
+	{
+	"pièges de ronces" : "chaque ennemis essaie de se dépêtrer pour attaquer ce tour-ci.",
+	"ronces meurtières" : "chaque ennemis est attaqué par des ronces ce tour-ci.",
+	"potion magique" : "le druide soigne un allié."
+	},
+
+	#guerrière/guerrier
+	{
+	
+	},
+
+	#mage
+	{
+	
+	},
+
+	#paladin.e
+	{
+	
+	},
+
+	#prêtre.sse
+	{
+	
+	},
+
+	#rodeur/rodeuse
+	{
+	
+	},
+
+	#voleur/voleuse
+	{
+	
+	},
+]
+
 carac = [
 	"Force",
 	"Dextérité",
@@ -70,177 +123,6 @@ genre = [
 	"masculin",
 	"androgyne",
 	]
-
-set_barbare = [
-	{
-	"hache" : [1,"Force"],
-	"hache" : [1,"Force"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"hache_2_m" : [2,"Force"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"hache" : [1,"Force"],
-	"bouclier" : [1,"Constitution"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"hache" : [1,"Force"],
-	"hache_lance" : [1,"Force"],
-	"armure" : [1,"Constitution"],
-	},
-]
-
-set_barde = [
-	{
-	"rapiere" : [1,"Charisme"],
-	"lyre" : [1,"Charisme"],
-	"vetements" : [1,"Charisme"],
-	},
-
-	{
-	"rapiere" : [1,"Charisme"],
-	"lyre" : [1,"Charisme"],
-	"armure" : [1,"Constitution"],
-	},
-]
-
-set_druide = [
-	{
-	"baton" : [2,"Sagesse"],
-	"pagne" : [1,"Sagesse"],
-	},
-
-	{
-	"griffe" : [1,"Sagesse"],
-	"griffe" : [1,"Sagesse"],
-	"pagne" : [1,"Sagesse"],
-	},
-]
-
-set_guerrier_e = [
-	{
-	"epee" : [1,"Force"],
-	"epee" : [1,"Force"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"epee_2_m" : [2,"Force"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"epee" : [1,"Force"],
-	"bouclier" : [1,"Constitution"],
-	"armure" : [1,"Constitution"],
-	},
-]
-
-set_mage = [
-	{
-	"poignard" : [1,"Intelligence"],
-	"livre_sorts" : [1,"Intelligence"],
-	"robe" : [1,"Intelligence"],
-	},
-
-	{
-	"sceptre" : [2,"Intelligence"],
-	"robe" : [1,"Intelligence"],
-	},
-]
-
-set_paladin_e = [
-	{
-	"marteau_2_m" : [2,"Charisme"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"morgenstern" : [1,"Charisme"],
-	"Bouclier" : [1,"Constitution"],
-	"armure" : [1,"Constitution"],
-	},
-]
-
-set_pretre_sse = [
-	{
-	"baton" : [2,"Sagesse"],
-	"bure" : [1,"Sagesse"],
-	},
-
-	{
-	"croix" : [1,"Sagesse"],
-	"livre_prieres" : [1,"Sagesse"],
-	"bure" : [1,"Sagesse"],
-	},
-]
-
-set_rodeur_rodeuse = [
-	{
-	"arbalète": [2,"Dextérité"],
-	"cuir" : [1,"Dextérité"],
-	},
-
-	{
-	"dague": [1,"Dextérité"],
-	"fronde": [1,"Dextérité"],
-	"cuir" : [1,"Dextérité"],
-	},
-
-	{
-	"dague": [1,"Dextérité"],
-	"dague": [1,"Dextérité"],
-	"cuir" : [1,"Dextérité"],
-	},
-
-	{
-	"dague": [1,"Dextérité"],
-	"dague": [1,"Dextérité"],
-	"armure" : [1,"Constitution"],
-	},
-]
-
-set_voleur = [
-	{
-	"katana" : [2,"Dextérité"],
-	"cuir" : [1,"Dextérité"],
-	},
-
-	{
-	"dague" : [1,"Dextérité"],
-	"dague" : [1,"Dextérité"],
-	"cuir" : [1,"Dextérité"],
-	},
-
-	{
-	"shuriken" : [1,"Dextérité"],
-	"dague" : [1,"Dextérité"],
-	"cuir" : [1,"Dextérité"],
-	},
-
-	{
-	"katana" : [2,"Dextérité"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"dague" : [1,"Dextérité"],
-	"dague" : [1,"Dextérité"],
-	"armure" : [1,"Constitution"],
-	},
-
-	{
-	"shuriken" : [1,"Dextérité"],
-	"dague" : [1,"Dextérité"],
-	"armure" : [1,"Constitution"],
-	},
-]
 
 prenoms_f = [
 	"An",
