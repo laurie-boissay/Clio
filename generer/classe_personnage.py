@@ -27,6 +27,7 @@ class Personnage:
 		self.team = "ERREUR"
 
 		self.classe = ""
+		self.classe_indice = None
 
 		self.carac = {
 			"Force" : 0,
@@ -37,48 +38,21 @@ class Personnage:
 			"Charisme" : 0,
 			}
 
-		
-		self.dague = 0 		#d
-		self.hache = 0 		#f
-		self.epee = 0		#f
-		self.poignard = 0	#i
-		self.croix = 0		#s
-		self.rapiere = 0	#ch
-		self.morgenstern = 0#ch
-		self.griffe = 0		#s
-		
-		self.fronde = 0		#d
-		self.hache_lance = 0#f
-		self.shuriken = 0	#d
-		
-		self.livre.sorts = 0#i
-		self.livre.prieres = 0#s
-		self.lyre = 0		#c
+		self.vie_max = 10
 
-		self.epee_2_m = 0	#f
-		self.hache_2_m = 0	#f
-		self.lance_2_m = 0	#f
-		self.marteau_2_m = 0#ch
-		self.katana = 0		#d
-		self.baton = 0		#s
-		self.sceptre = 0	#i
-		
-		self.arbalete = 0	#d
+		self.main_principale = ""
+		self.main_secondaire = ""
+		self.torse = ""
 
-		self.bouclier = 0	#co
-		self.armure = 0		#co
-		self.cuir = 0		#d
-		self.vetements = 0	#ch
-		self.robe = 0		#i
-		self.bure = 0		#s
-		self.pagne = 0		#s
-
-		self.vie_max = 0	#co
+		self.don = ""
 		
-		self.animal = 0		#+toucher
+		self.xp = 0
+		self.argent = 100
 
 		self.commande_pj = "\n> !pj, "
 		self.commande_save = "\n> !joue"
+		
+
 
 	def set_cmd_texte(self, message):
 		"""
@@ -101,16 +75,17 @@ class Personnage:
 		"""
 		for i in range(1, len(self.cmd_texte), 1):
 			couple = self.cmd_texte[i].split("=")
-			couple[0] = couple[0].strip(" ")
-			couple[1] = couple[1].strip(" ")
-			if couple[0] == "prénom":
-				self.prenom = couple[1]
-			elif couple[0] == "genre":
-				self.genre = couple[1].lower()
-			elif couple[0] == "classe":
-				self.classe = couple[1].lower()
-			elif couple[0] == "team":
-				self.team = couple[1]
+			if len(couple) > 1:
+				couple[0] = couple[0].strip(" ")
+				couple[1] = couple[1].strip(" ")
+				if couple[0] == "prénom":
+					self.prenom = couple[1]
+				elif couple[0] == "genre":
+					self.genre = couple[1].lower()
+				elif couple[0] == "classe":
+					self.classe = couple[1].lower()
+				elif couple[0] == "team":
+					self.team = couple[1]
 			
 
 	def set_particularites(self):
@@ -125,12 +100,25 @@ class Personnage:
 			self.genre = genre[randrange(len(genre))]
 
 		if self.classe == "":
+			self.classe_indice = randrange(len(classe))
 			if self.genre == "androgyne":
-				self.classe = classe[randrange(len(classe))]
+				self.classe = classe[self.classe_indice]
 			elif self.genre == "féminin":
-				self.classe = classe_f[randrange(len(classe_f))]
+				self.classe = classe_f[self.classe_indice]
 			else:
-				self.classe = classe_m[randrange(len(classe_m))]
+				self.classe = classe_m[self.classe_indice]
+
+		if self.classe_indice == None:
+			for i in range(len(classe)):
+				if self.genre == "androgyne":
+					if self.classe == classe[i]:
+						self.classe_indice = i
+				elif self.genre == "masculin":
+					if self.classe == classe_m[i]:
+						self.classe_indice = i
+				else:
+					if self.classe == classe_f[i]:
+						self.classe_indice = i
 
 		if self.prenom == "":
 			if self.genre == "féminin":
@@ -149,8 +137,8 @@ class Personnage:
 		else:
 			self.pronom = "Iel"
 
-
-	def bonus_de_metier(self):
+		
+	def stat_prioritaire_de_classe(self):
 		"""
 		Cette fonction doit définir quelle est sa caractéristique prioritaire.
 
@@ -205,9 +193,17 @@ class Personnage:
 		commande += str(self.carac["Intelligence"]) + ","
 		commande += str(self.carac["Sagesse"]) + ","
 		commande += str(self.carac["Charisme"]) + ","
-		commande += self.classe
+		commande += str(self.vie_max) + ","
+		commande += str(self.argent) + ":"
+		commande += self.classe + ","
+		commande += self.genre + ":"
+		commande += self.don
+		
 
 		self.commande_save += commande
+
+	def set_points_de_vie_maximum(self):
+		self.vie_max += self.carac["Constitution"]
 		
 
 	def afficher_personnage(self):
