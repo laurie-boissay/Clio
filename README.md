@@ -29,3 +29,11 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
         !1d20+5
         
  - ajout de set d'équipement pour toutes les catégorie de personnages.
+ 
+11/06/20 :
+
+- modification de l'équipement. Il ne sera pas sous forme de set mais plus libre d'accés ;
+
+- création d'une "boutique" d'armes et d'armures, la recherche se fait par mots clés. Le procésus fait partie de la narration. Il n'est pas encore possible "d'acheter" ;
+
+- ajout de quelques dons pour 3 classes de personnages. Je cherche encore pour les autres.
