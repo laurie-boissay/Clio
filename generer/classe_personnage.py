@@ -24,7 +24,6 @@ class Personnage:
 		self.prenom = ""
 		self.genre = ""
 		self.pronom = ""
-		self.team = "ERREUR"
 
 		self.classe = ""
 		self.classe_indice = None
@@ -38,11 +37,8 @@ class Personnage:
 			"Charisme" : 0,
 			}
 
+		self.defense = 10
 		self.vie_max = 10
-
-		self.main_principale = ""
-		self.main_secondaire = ""
-		self.torse = ""
 
 		self.don = ""
 		
@@ -84,9 +80,7 @@ class Personnage:
 					self.genre = couple[1].lower()
 				elif couple[0] == "classe":
 					self.classe = couple[1].lower()
-				elif couple[0] == "team":
-					self.team = couple[1]
-			
+	
 
 	def set_particularites(self):
 		"""
@@ -99,25 +93,25 @@ class Personnage:
 		if self.genre == "":
 			self.genre = genre[randrange(len(genre))]
 
-		if self.classe == "":
+		if self.classe == "" or (self.classe not in classe_m and self.classe not in classe_f and self.classe not in classe):
 			self.classe_indice = randrange(len(classe))
-			if self.genre == "androgyne":
-				self.classe = classe[self.classe_indice]
+			if self.genre == "masculin":
+				self.classe = classe_m[self.classe_indice]
 			elif self.genre == "féminin":
 				self.classe = classe_f[self.classe_indice]
 			else:
-				self.classe = classe_m[self.classe_indice]
+				self.classe = classe[self.classe_indice]
 
 		if self.classe_indice == None:
 			for i in range(len(classe)):
-				if self.genre == "androgyne":
-					if self.classe == classe[i]:
+				if self.genre == "féminin":
+					if self.classe == classe_f[i]:
 						self.classe_indice = i
 				elif self.genre == "masculin":
 					if self.classe == classe_m[i]:
 						self.classe_indice = i
 				else:
-					if self.classe == classe_f[i]:
+					if self.classe == classe[i]:
 						self.classe_indice = i
 
 		if self.prenom == "":
@@ -179,13 +173,12 @@ class Personnage:
 		commande = "prénom=" + self.prenom + ", "
 		commande += "classe=" + self.classe + ", "
 		commande += "genre=" + self.genre + ", "
-		commande += "team=" + self.team 
 		self.commande_pj += commande
 
 
 	def set_commande_save(self):
-		commande = ":" + self.prenom
-		commande += ":" + self.team + ":"
+		#nom_joueur_id : ["nom_perso",F,Co,D,I,S,Ch,def,PV_max,PV,PA,xp,classe,genre,don,[sac],[équipé]],
+		commande = ":" + self.prenom + ":"
 
 		commande += str(self.carac["Force"]) + ","
 		commande += str(self.carac["Constitution"]) + ","
@@ -193,14 +186,18 @@ class Personnage:
 		commande += str(self.carac["Intelligence"]) + ","
 		commande += str(self.carac["Sagesse"]) + ","
 		commande += str(self.carac["Charisme"]) + ","
+		commande += str(self.defense) + ","
 		commande += str(self.vie_max) + ","
-		commande += str(self.argent) + ":"
+		commande += str(self.vie_max) + ","
+		commande += str(self.argent) + ","
+		commande += str(self.xp) + ":"
+
 		commande += self.classe + ","
-		commande += self.genre + ":"
+		commande += self.genre + ","
 		commande += self.don
 		
-
 		self.commande_save += commande
+
 
 	def set_points_de_vie_maximum(self):
 		self.vie_max += self.carac["Constitution"]
@@ -235,10 +232,10 @@ class Personnage:
 		self.set_commande_save()
 
 		text_a_afficher += "\n\n"
-		text_a_afficher += "```!classes```Affiche les classes qui donnent une carractéristique prioritaire.\n"
+		text_a_afficher += "```!classes```Affiche les classes disponibles.\n"
 		text_a_afficher += "```!genres```Affiche les genres qui influencent le prénom.\n"
 		text_a_afficher += "\n\n*Personnalise ton personnage :*\n"
-		text_a_afficher += "*(Tu peux laisser certains paramètres vides mais pas le n° de team.)*\n"
+		text_a_afficher += "*(Tu peux laisser certains paramètres vides, je les remplirai.)*\n"
 		text_a_afficher += self.commande_pj
 
 		text_a_afficher += "\n\n*Sauvegarde ton personnage :*\n"
