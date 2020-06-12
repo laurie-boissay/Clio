@@ -37,3 +37,15 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - création d'une "boutique" d'armes et d'armures, la recherche se fait par mots clés. Le procésus fait partie de la narration. Il n'est pas encore possible "d'acheter" ;
 
 - ajout de quelques dons pour 3 classes de personnages. Je cherche encore pour les autres.
+
+12/06/20 :
+
+- ajout de la commande pour acheter de l'équipement ;
+
+- ajout de la commande pour s'équiper d'une armure ;
+
+- ajout de la commande pour déséquiper une armure ;
+
+- Les achats sont soit autorisés soit interdits ;
+
+- ajout d'attributs de personnage.
