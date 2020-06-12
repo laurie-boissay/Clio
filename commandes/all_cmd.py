@@ -367,7 +367,7 @@ def texte_rejoindre(message):
         team = int(cmd[1])
         #le message.author du joueur est associé à sa team.
         team_des_joueurs[message.author] = team
-        texte = message.author.name + " Tu as bien rejoins la team n°" + str(team_des_joueurs[message.author])
+        texte = message.author.name + " tu as bien rejoins la team n°" + str(team_des_joueurs[message.author])
         texte += ".\nLe canal écrit discord autorisé pour cette partie est : "
         texte += info_de_partie[team]["allowed_channel"]
 
@@ -387,10 +387,8 @@ def texte_joue(message):
     On envoie le personnage dans la liste info_de_partie.
     Cette liste contient des dictionnaires.
     Le dictionnaire à l'indice 0 est attribué à la team n°0.
-
     On envoie le message.author du joueur dans team_des_joueurs.
     C'est un dictionnaire qui associe pseudo et n° de team.
-
     nom_joueur_id : ["nom_perso",F,Co,D,I,S,Ch,def,PV_max,PV,PA,xp,classe,genre,don,[sac],[équipé]]
     """
 
@@ -410,7 +408,11 @@ def texte_joue(message):
     autre = cmd[3].split(",")
 
     # le message.author du joueur est associé à son nom de personnage.
-    info_de_partie[team][message.author] = [nom_perso]
+    try:
+        info_de_partie[team][message.author] = [nom_perso]
+
+    except IndexError:
+        return "Il faut d'abord créer une partie."
 
        #On associe le nom du perso à ses carac et classe.
     for i in range(len(carac)):
