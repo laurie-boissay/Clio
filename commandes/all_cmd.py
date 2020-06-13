@@ -11,6 +11,14 @@ from collection_de_mots.equipement import *
 
 
 def all_users_cmd(message, client):
+    """
+    Définit un canal et un texte par défaut.
+        Vérifie pour chaque message tappé s'il
+        s'agit d'une commande.
+            Si oui, appelle la fonction appropriée
+            qui peut modifier le texte.
+    Renvoie le texte, le canal.
+    """
     canal = message.channel
     texte = "not a cmd"
 
@@ -24,8 +32,8 @@ def all_users_cmd(message, client):
             # Renvoi un message d'aide.
             texte = texte_aide()
 
-        elif message.content.startswith('!nouvelle partie'):
-            texte = texte_nouvelle_partie(message)
+        elif message.content.startswith('!initialiser'):
+            texte = texte_initialiser(message)
             canal = message.author
 
         elif message.content.startswith('!rejoindre'):
@@ -54,32 +62,33 @@ def all_users_cmd(message, client):
                     texte += genre[i] + ", "
                 canal = message.author
 
-        elif message.content.startswith('!armes') and message.author in team_des_joueurs:
-            texte = boutique_d_armes(message)
-
-        elif message.content.startswith('!achat') and message.author in team_des_joueurs:
-            texte = achat(message)
-
-        elif message.content.startswith('!équiper') and message.author in team_des_joueurs:
-            texte = equiper(message)
-
-        elif message.content.startswith('!déséquiper') and message.author in team_des_joueurs:
-            texte = desequiper(message)
-
         elif message.content.startswith('!joue'):
             texte = texte_joue(message)
 
         elif message.content.startswith('!qui'):
             texte = texte_qui(message)
 
-        elif message.content.startswith('!'):
-            texte = commande_des(message.content)
-            if texte != "not a cmd" :
-                if message.author in team_des_joueurs:
-                    perso = nom_perso(message)
-                else:
-                    perso = message.author.name
-                texte = str(perso) + " s'empare des dés : " + texte
+        elif message.author in team_des_joueurs:
+
+            if message.content.startswith('!armes'):
+                texte = boutique_d_armes(message)
+
+            elif message.content.startswith('!achat'):
+                texte = achat(message)
+
+            elif message.content.startswith('!équiper'):
+                texte = equiper(message)
+
+            elif message.content.startswith('!déséquiper'):
+                texte = desequiper(message)
+
+            elif message.content.startswith('!') and message.content.strip("!").lower() in armes_2_mains:
+                texte = attaque_arme(message, "deux mains")
+                #tour ennemis ?
+
+            elif message.content.startswith('!') and message.content.strip("!").lower() in armes_1_main:
+                texte = attaque_arme(message, "une main")
+                #tour ennemis ?
           
     return canal, texte
 
@@ -162,13 +171,18 @@ def argent(message):
     """
     return info_de_partie[num_team(message)][message.author][10]
 
+def modifier_argent(message, montant):
+    """
+    Modifie la valeur de "Argent".
+    """
+    info_de_partie[num_team(message)][message.author][10] += montant
+
 def xp(message):
     """
     Renvoie (int) l'expérience du personnage associé au joueur/
     à la joueuse.
     """
     return info_de_partie[num_team(message)][message.author][11]
-
 
 def perso_classe(message):
     """
@@ -206,7 +220,80 @@ def equipement(message):
     return info_de_partie[num_team(message)][message.author][16]
 
 
+def attaque_arme(message, categorie):
+    """
+    Vérifie si le personnage possède l'arme.
+        si non, renvoie un texte.
+
+        Si oui, de quelle catégorie est-elle ?
+        Puis sur quelle caractéristique elle touche ?
+        appelle la fonction roll.
+
+        A VENIR :
+        est-ce touché ? (ajouter un paramètre)
+            si oui : lancer les dégâts selon la catégorie.
+            si non : texte, conséquences ?
+    """
+    cmd = message.content.strip("!")
+    arme = cmd.strip(" ").lower()
+    
+    if arme in sac(message):
+        
+        if categorie == "une main":
+            index = 0
+        
+        elif categorie == "deux mains":
+            index = 1
+        
+        for k, v in armes_armures[index].items():
+            if arme == k :
+                stat = v[0][2]
+        
+        bonus = associer_stat(message,stat)
+        texte = nom_perso(message) + " utilise 1 " + arme + " :\n"
+        texte += roll(1, 20, bonus)
+
+    else:
+        texte = "Tu ne possède pas cette arme : " + arme + "."
+
+    return texte
+
+
+def associer_stat(message, stat):
+    """
+    Quelle fonction correspond à cette stat ?
+    Appelle la fonction.
+    Renvoie la valeur de la stat correspondant au personnage joueur.
+    """
+    if stat == "force":
+        valeur = force(message)
+
+    elif stat == "dextérité":
+        valeur = dexterite(message)
+
+    elif stat == "constitution":
+        valeur = constitution(message)
+
+    elif stat == "intelligence":
+        valeur = intelligence(message)
+
+    elif stat == "sagesse":
+        valeur = sagesse(message)
+
+    else: #"charisme"
+        valeur = charisme(message)
+
+    return valeur
+
+
 def boutique_d_armes(message):
+    """
+    Vérifie si les achats sont autorisés pour ce personnage.
+        si non, retourne un texte.
+        si oui, vérifie si la demande d'achat précise un objet.
+            si non, demande de préciser avec un texte d'aide.
+            si oui, appelle la fonction liste_d_armes.
+    """
     if message.author not in info_de_partie[num_team(message)]["achats_autorisés"]:
         return "Les achats sont autorisés en ville uniquement."
 
@@ -231,14 +318,23 @@ def boutique_d_armes(message):
             texte += '> !armes:dextérité\n\n"Remarquez, une bonne une dague, c\'est toujours utile !"\n'
             texte += "> !armes:dague\n\n"
             return texte
+        
         else:
-            mot_cle = mot_cle[1].lower()
-            mot_cle = mot_cle.strip(" ")
+            mot_cle = mot_cle[1].strip(" ").lower()
         
             return liste_d_armes(mot_cle)
  
 
 def liste_d_armes(mot_cle):
+    """
+    Vérifie que le mot_cle est dans la liste des armes et armures.
+        si non, retourne un texte indiquant que non.
+        si oui, forme un texte avec toutes les occurences.
+            Vérifie si le texte n'est pas trop long pour être afficher 
+            sur Discord.
+                si oui, modifie le texte pour demander une précision.
+    Renvoie le texte.
+    """
     trouvaille = ""
     for i in range(len(armes_armures)):
 
@@ -256,9 +352,30 @@ def liste_d_armes(mot_cle):
         texte += "Alors, ça vous plaît ?"
         texte += "\n> !achat:épée rutillante"
 
+    if len(texte) > 1999:
+        texte = "ça prendrait la journée à tout déballer.".capitalize()
+        texte += " Essayez de me décrire ce que vous voulez."
+        texte += "\n> !armes:force"
+        texte += "\n> !armes:25"
+
     return texte
 
 def achat(message):
+    """
+    Vérifie si le joueur est autorisé a acheter.
+        si non, renvoie un texte négatif.
+        si oui, vérifie que la demande d'achat précise un objet.
+            si non, demande une précision avec un texte d'aide.
+            si oui, vérifie que l'objet existe.
+                si non, signale que l'objet n'existe pas.
+                si oui, vérifie que le personnage a assez d'argent pour payer.
+                    si non, renvoie un texte négatif.
+                    si oui :
+                        - retranche la somme d'argent
+                        - ajoute l'objet dans le sac du personnage
+                        - signale que la transaction s'est bien passée.
+    renvoie le texte.
+    """
     if message.author not in info_de_partie[num_team(message)]["achats_autorisés"]:
         return "Les achats sont autorisés en ville uniquement."
 
@@ -280,7 +397,7 @@ def achat(message):
 
                         if argent(message) - v[-1] >= 0 :
                             texte += ".\n" + str(argent(message)) + " - " + str(v[-1]) + " = "
-                            info_de_partie[num_team(message)][message.author][10] -= v[-1]
+                            modifier_argent(message, -v[-1])
                             texte += str(argent(message))
                             texte += "\nEt elle est maintenant à vous. Bonne journée"
                             sac(message).append(k)
@@ -307,29 +424,22 @@ def num_team(message):
 
 
 def texte_aide():
+    """
+    Renvoie un texte d'aide/mode d'emploi.
+    """
     texte = [
     "Je suis Clio, la muse de l'histoire et j'adore le JDR."
     "\nTu peux me parler en toute confidentialité en message privé."
     "\nJe suis là pour faire vivre des histoire épiques à mes joueurs."
-    "\nPour que cela soit possible, il y a plusieurs étapes :"
+    "\nPour que cela soit possible, il y a plusieurs étapes."
+    "\nLa première est de créer une nouvelle partie. Ensuite, tu seras guidé.e."
 
-    "\n\n```!nouvelle partie```"
-    "Tu dois écrire cette commande dans le canal ou va se dérouler la partie."
-    "\nCette commande te renvoie en message privé. C'est une commande."
-
-    "\n\n```!rejoindre:NUM TEAM"
-    "\nCommunique cette commande aux joueurs que tu souhaite inviter dans la partie."
-    "\nTous les joueurs/ toutes les joueuses doivent m'envoyer cette commande en message privé."
-    "\nTu seras ensuite invité à rejoindre le canal dédié à la partie pour générer ton personnage."
-
-    "\n\n```!pj```"
-    "Tu peux personnaliser ton personnage:"
-    "```!pj, prénom=Clio, classe=druide, genre=androgyne```"
-    "```!pj, prénom=Prune```"
-    "```!pj, genre=masculin```"
-    
-    "\n\nTous les joueurs doivent enregistrer leur personnage."
-    "\nJe génère moi même la commande de sauvegarde, il suffit de la copier-coller et valider !"
+    "\n\n```!initialiser```"
+    "Créer une nouvelle partie."
+    "\nTu dois écrire cette commande dans le canal ou va se dérouler la partie."
+    "\nTu vas recevoir en message privé une commande."
+    "\n Il faudra l'envoyer en en message privé aux autres joueurs et "
+    "\nla copier-coller aussi en message privé mais dans mon canal."
 
     "\n\n```!qui```"
     'Permet de vérifer que ton perso est bien "enregistré".'
@@ -338,7 +448,24 @@ def texte_aide():
     return texte[0]
 
 
-def texte_nouvelle_partie(message):
+def texte_initialiser(message):
+    """
+    Nombre = combien de partie son enregistrées dans info_de_partie.
+    Pour une nouvelle parie, le team_number correspondra à ce nombre.
+
+    Indique que la partie est bien créée, le numéro de team assigné,
+    un texte d'aide.
+
+    Ajoute un dictionnaire dans la liste info_de_partie àl'indice team_number.
+    Ajoute dans ce dictionnaire 3 entrées : 
+        - "allowed_channel" : le canal dans le quel la partie se jouera ;
+        - "achats_autorisés" : (liste de joueurs autorisés) ;
+        - "combat_autorisés" : (liste de joueurs autorisés).
+
+    Si la commande !initialiser est tapée en message privé, le texte devient un message d'erreur.
+    
+    renvoie le texte.
+    """
     try:
         team_number = len(info_de_partie)
         texte = "La partie à bien été créée."
@@ -353,19 +480,29 @@ def texte_nouvelle_partie(message):
         info_de_partie[team_number]["combat_autorisés"] = []
     
     except AttributeError:
-        texte = "La commande :```!nouvelle partie```doit être tapée dans le canal ou va se jouer la partie.\n"
+        texte = "La commande :```!initialiser```doit être tapée dans le canal ou va se jouer la partie.\n"
 
     return texte
 
 
 def texte_rejoindre(message):
+    """
+    Le message.author du joueur est associé à la team indiquée dans la liste team_des_joueurs.
+    Texte de confirmation, aide.
+    
+    Si le numéro de team n'est pas indiqué le texte devient un message d'erreur.
+    Si le numéro de team n'est pas bon le texte devient un message d'erreur.
+    Si le dictionnaire team de la liste info_de_partie n'a pas d'entrée "allowed_channel":
+        le texte devient un mesage d'erreur.
+
+    Renvoie le texte.
+    """
     cmd = message.content.split(":")
 
     pseudo_player = message.author
 
     try:     
         team = int(cmd[1])
-        #le message.author du joueur est associé à sa team.
         team_des_joueurs[message.author] = team
         texte = message.author.name + " tu as bien rejoins la team n°" + str(team_des_joueurs[message.author])
         texte += ".\nLe canal écrit discord autorisé pour cette partie est : "
@@ -378,18 +515,45 @@ def texte_rejoindre(message):
         texte = "Il me faut un numéro de team."
     except IndexError:
         texte = "Ce numéro de team n'est pas bon."
+    except KeyError:
+        texte = "Il faut d'abord créer une partie."
 
     return texte
 
 
 def texte_joue(message):
     """
-    On envoie le personnage dans la liste info_de_partie.
+    Vérifie que le joueur/ la joueuse a bien rejoint une partie.
+        si non, renvoie un texte d'erreur.
+
+    Cette fonction reçoit cette commande qui représente un personnage :
+    !joue:Gell:3,1,3,3,1,1,10,11,11,100,0:paladin.e,androgyne,don
+
+    Elle sépare le texte au niveau du symbole :
+
+    Vérifie qu'il y a bien 4 parties.
+        si non, renvoie un texte d'erreur.
+
+    la partie[0] ne sert qu'a appeler la fonction ;
+    la partie[1] est le nom du personnage ;
+    la partie[2] concerne les entiers ;
+    la partie[3] les autres caractéristiques du personnage.
+
+    le message.author est associé au nom du perso.
+        si la partie n'a pas été créée, renvoie un texte d'erreur.
+
+    Envoie le personnage dans la liste info_de_partie.
     Cette liste contient des dictionnaires.
     Le dictionnaire à l'indice 0 est attribué à la team n°0.
-    On envoie le message.author du joueur dans team_des_joueurs.
-    C'est un dictionnaire qui associe pseudo et n° de team.
-    nom_joueur_id : ["nom_perso",F,Co,D,I,S,Ch,def,PV_max,PV,PA,xp,classe,genre,don,[sac],[équipé]]
+    l'entrée nom_joueur_id du dictionnaire correspondant contient une liste :
+
+    ["nom_perso",F,Co,D,I,S,Ch,def,PV_max,PV,PA,xp,classe,genre,don,[sac],[équipé]]
+
+    Autorise message.author a faire des achats.
+
+    texte de confirmation/aide.
+
+    Renvoie le texte.
     """
 
     #les paramètres sont séparés par le symbole :
@@ -438,6 +602,11 @@ def texte_joue(message):
 
 
 def texte_qui(message):
+    """
+    Renvoie un texte avec toutes les particularités du personnage
+    + conseils et aide.
+    Personnalise le texte en fonction du genre du personnage.
+    """
     if message.author in team_des_joueurs:
         player = False
 
@@ -487,7 +656,20 @@ def texte_qui(message):
     return texte
 
 def equiper(message):
+    """
+    Vérifie que l'objet à équiper est précisé.
+        si non, demande une précision.
+    Vérifie que l'objet à équipé est bien dans la liste sac.
+        si non signale l'erreur.
+    Vérifie que la liste équipement est vide.
+        si non, signale l'erreur.
+        si oui :
+            l'objet est supprimé de la liste sac ;
+            l'objet est ajouté à la liste équipement.
+    Renvoie le texte.
+    """
     objet = message.content.split(":")
+
  
     if len(objet) == 1 or objet[1] == "":
         texte = "Que veux tu équiper ?\n"
@@ -516,14 +698,23 @@ def equiper(message):
 
 
 def desequiper(message):
+    """
+    Vérifie que l'objet à déséquiper est précisé.
+        si non, demande une précision.
+    Vérifie que l'objet à déséquipé est bien équipé.
+        si non signale l'erreur.
+        si oui, l'objet est supprimé de la liste équipement et
+        l'objet est ajouté à la liste sac.
+        texte de confirmation.
+    Renvoie le texte.
+    """
     objet = message.content.split(":")
  
     if len(objet) == 1 or objet[1] == "":
         texte = "Que veux tu déséquiper ?\n"
         texte += "> !déséquiper:nom précis de l'objet"
     else:
-        objet = objet[1].strip(" ")
-        objet = objet.lower()
+        objet = objet[1].strip(" ").lower()
         texte = ""
 
         if objet not in equipement(message):
@@ -537,6 +728,10 @@ def desequiper(message):
     return texte
 
 def texte_possessions(message, indice):
+    """
+    Renvoie un texte : le contenu du sac ou l'armure équipée
+    selon ce qui est précisé en paramètre.
+    """
     if indice == "sac" :
         objet = sac(message)
     elif indice == "equipement":
@@ -553,6 +748,10 @@ def texte_possessions(message, indice):
     return texte
 
 def texte_pj(message):
+    """
+    Génère un personnage joueur.
+    Renvoie un texte : une commande.
+    """
     pj = Personnage()
     pj.set_cmd_texte(message)
     pj.set_param_identite()
@@ -564,6 +763,9 @@ def texte_pj(message):
 
 
 def texte_info():
+    """
+    Renvoie un texte : ambiance + l'adresse du dossier Clio sur Github.
+    """
     texte = [
     "Vous pensez que les gnomes ont le monopole de la technologie ?"
     "\nVous pouvez participer à mon amélioration :" 
@@ -573,6 +775,9 @@ def texte_info():
 
 
 def texte_classes():
+    """
+    Renvoie un texte : la liste des classes implémentées.
+    """
     texte = "Les classes implémentées :\n\n"
     
     for k, v in classes_et_carac_associee.items():
