@@ -19,9 +19,8 @@ armes_armures = [
 
 	"rapière" : [[1, "d6 deg, touche sur le ", "charisme"], "à une main", "au corps à corps", 25],
 	"morgenstern" : [[1, "d6 deg, touche sur le ", "charisme"], "à une main", "au corps à corps", 25],
-
 	
-	"hachettes de lancé" : [[1, "d6 deg, touche sur la ", "force"], "à une main", "à distance", 25],
+	"hachette de lancé" : [[1, "d6 deg, touche sur la ", "force"], "à une main", "à distance", 25],
 
 	"fronde" : [[1, "d6 deg, touche sur la ", "dextérité"], "à une main", "à distance", 25],
 	"shuriken" : [[1, "d6 deg, touche sur la ", "dextérité"], "à une main", "à distance", 25],
@@ -63,3 +62,9 @@ armes_armures = [
 	"pagne" : [[1, " en ", "défense"], "équipé", "comme armure", 40],
 	},
 ]
+
+armes_1_main = []
+
+armes_2_mains = []
+
+armures = []
