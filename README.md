@@ -52,4 +52,6 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 
 13/06/20 :
 
-- début de la fonction de combat : les joueurs/joueuses peuvent faire un jet de toucher avec une arme en leur possession. Les dés seront lancés avec le bonus de la stat appropriée.
+- début de la fonction de combat : les joueurs/joueuses peuvent faire un jet de toucher avec une arme en leur possession. Les dés sont lancés avec le bonus de la stat appropriée ;
+
+- chaque classe de personnage à trois dons. Les PJ sont générés avec un don aléatoire ou choisit de leur classe. Les dons sont expliqués grâce à la commande !dons.
