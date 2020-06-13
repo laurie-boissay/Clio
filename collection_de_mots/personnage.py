@@ -1,23 +1,24 @@
 classes_et_carac_associee = {
-	"barbare" : "Force",
-	"barde" : "Charisme",
-	"druide" : "Sagesse",
-	"guerrière/guerrier" : "Force",
-	"guerrier" : "Force",
-	"guerrière" : "Force",
-	"mage" : "Intelligence",
-	"paladin" : "Charisme",
-	"paladin.e" : "Charisme",
-	"paladine" : "Charisme",
-	"prêtre" : "Sagesse",
-	"prêtresse" : "Sagesse",
-	"prêtre.sse" : "Sagesse",
-	"rodeuse" : "Dextérité",
-	"rodeur" : "Dextérité",
-	"rodeur/rodeuse" : "Dextérité",
-	"voleur/voleuse" : "Dextérité",
-	"voleur" : "Dextérité",
-	"voleuse" : "Dextérité",
+	"barbare" : "force",
+	"barde" : "charisme",
+	"druide" : "sagesse",
+	"guerrière/guerrier" : "force",
+	"guerrier" : "force",
+	"guerrière" : "force",
+	"mage" : "intelligence",
+	"nécromancien.ne" : "intelligence",
+	"paladin" : "charisme",
+	"paladin.e" : "charisme",
+	"paladine" : "charisme",
+	"prêtre" : "sagesse",
+	"prêtresse" : "sagesse",
+	"prêtre.sse" : "sagesse",
+	"rodeuse" : "dextérité",
+	"rodeur" : "dextérité",
+	"rodeur/rodeuse" : "dextérité",
+	"voleur/voleuse" : "dextérité",
+	"voleur" : "dextérité",
+	"voleuse" : "dextérité",
 	}
 
 classe = [
@@ -26,6 +27,7 @@ classe = [
 	"druide",
 	"guerrière/guerrier",
 	"mage",
+	"nécromancien.ne",
 	"paladin.e",
 	"prêtre.sse",
 	"rodeur/rodeuse",
@@ -38,6 +40,7 @@ classe_f = [
 	"druide", 
 	"guerrière",
 	"mage",
+	"nécromancienne",
 	"paladine",
 	"prêtresse",
 	"rodeuse",
@@ -50,72 +53,133 @@ classe_m = [
 	"druide",
 	"guerrier",
 	"mage",
+	"nécromancien",
 	"paladin",
 	"prêtre",
 	"rodeur",
 	"voleur",
 	]
 
+toutes_classes = [
+	[
+	"barbare",
+	"barde",
+	"druide",
+	"guerrière/guerrier",
+	"mage",
+	"nécromancien.ne",
+	"paladin.e",
+	"prêtre.sse",
+	"rodeur/rodeuse",
+	"voleur/voleuse", 
+	],
+
+	[
+	"barbare",
+	"barde",
+	"druide", 
+	"guerrière",
+	"mage",
+	"nécromancienne",
+	"paladine",
+	"prêtresse",
+	"rodeuse",
+	"voleuse",
+	],
+
+	[
+	"barbare",
+	"barde",
+	"druide",
+	"guerrier",
+	"mage",
+	"nécromancien",
+	"paladin",
+	"prêtre",
+	"rodeur",
+	"voleur",
+	],
+]
+
 dons_par_classes = [
 	#barbare
 	{
-	"cri de ralliement" : "augmente la constitution des membres du groupe pour la durée du combat.\n(non cumulable)",
-	"insultes" : "les ennemis oublient temporairement l'existance des autres membres du groupe",
-	"cri de guerre" : "augmente la force des membres du groupe pour la durée du combat.\n(non cumulable)"
+	"berserker" : "Augmente sa constitution de 3 pour la durée du combat.\n(non cumulable).",
+	"railler" : "les ennemis ont X fois plus de chances de le/la prendre provisoirement pour cible (X=force).",
+	"furie" : "Sous mi-PV, double les dégâts infligés.\n(passif).",
 	},
 
 	#barde
 	{
-	"marche militaire" : "augmente les dégats des membres du groupe pour la durée du combat.\n(non cumulable)",
-	"ode aux héros" : "augmente le charisme des membres du groupe pour la durée du combat.\n(non cumulable)",
-	"ballade rythmée" : "chaque ennemis doit résister à l'envie de danser pour attaquer ce tour-ci",
+	"marche" : "augmente de 2 les dégâts des membres du groupe pour la durée du combat.\n(non cumulable)",
+	"ode" : "augmente de 2 le charisme des membres du groupe pour la durée du combat.\n(non cumulable)",
+	"ballade" : "chaque ennemis doit résister à l'envie de danser pour attaquer ce tour-ci.",
 	},
 
 	#druide
 	{
-	"pièges de ronces" : "chaque ennemis essaie de se dépêtrer pour attaquer ce tour-ci.",
-	"ronces meurtières" : "chaque ennemis est attaqué par des ronces ce tour-ci.",
-	"potion magique" : "le druide soigne un allié."
+	"ronces" : "chaque ennemis essaie de se dépêtrer pour attaquer ce tour-ci.",
+	"épines" : "chaque ennemi subit 1dX dégâts ce tour-ci (X=sagesse).",
+	"bienfait" : "soigne tous les membres du groupe de x PV (X=sagesse)."
 	},
 
 	#guerrière/guerrier
 	{
-	
+	"cri" : "augmente sa force de 3 pour la durée du combat.\n(non cumulable).",
+	"robuste" : "augmente sa défense de 2 pour la durée du combat.\n(non cumulable).",
+	"railler" : "les ennemis ont X fois plus de chances de le/la prendre provisoirement pour cible (X=force).",
 	},
 
 	#mage
 	{
-	
+	"cible" : "l'attention des ennemis est attirée vers le personnage designé.",
+	"ombre" : "les ennemis oublient provisoirement le/la mage.",
+	"sommeil" : "1dX ennemis (X=intelligence) doivent resister ou s'endormir.",
+	},
+
+	#mage
+	{
+	"drain" : "vole 1dX PV à sa cible (X=intelligence).",
+	"réanimation" : "a X chances/10 de relever un mort (X=intelligence) + 1 au toucher par morts-vivants.\n(passif).",
+	"animation" : "a X chances/10 de relever un mort (X=intelligence) + 1 dégâts par morts-vivants.\n(passif).",
 	},
 
 	#paladin.e
 	{
-	
+	"lumière" : "les ennemis ont X fois plus de chances de le/la prendre provisoirement pour cible (X=charisme).",
+	"intervention" : "soigne complétement 1 allié.",
+	"marteau" : "étourdit 1 ennemi pendant X tours (X=charisme)",
 	},
 
 	#prêtre.sse
 	{
-	
+	"bienfait" : "soigne tous les membres du groupe de X PV (X=sagesse).",
+	"intervention" : "soigne complétement 1 allié.",
+	"benediction" : "augmente sa sagesse de 3 pour la durée du combat.\n(non cumulable).",
 	},
 
 	#rodeur/rodeuse
 	{
-	
+	"animal" : "augmente de 1 les chances de toucher des membres du groupe pour la durée du combat.\n(passif).",
+	"visée" : "augmente de 3 sa dextérité pour la durée du combat.\n(non cumulable).",
+	"reconnaissance" : "joue en premier/première en cas d'embuscade.\n(passif)",
 	},
 
 	#voleur/voleuse
 	{
-	
+	"ombre" : "les ennemis oublient provisoirement le/la voleur/voleuse.",
+	"fourbe" : "inflige X dégâts (X=dextérité) à une cible.",
+	"acide" : "chaque ennemi subit 1dX dégâts ce tour-ci (X=dextérité)."
 	},
 ]
 
 carac = [
-	"Force",
-	"Dextérité",
-	"Constitution",
-	"Intelligence",
-	"Sagesse",
-	"Charisme",
+	"force",
+	"dextérité",
+	"constitution",
+	"intelligence",
+	"sagesse",
+	"charisme",
 	]
 
 genre = [
