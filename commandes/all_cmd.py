@@ -65,10 +65,13 @@ def all_users_cmd(message, client):
         elif message.content.startswith('!joue'):
             texte = texte_joue(message)
 
+        elif message.content.startswith('!dons'):
+            texte = texte_dons(message)
+
         elif message.content.startswith('!qui'):
             texte = texte_qui(message)
 
-        elif message.author in team_des_joueurs:
+        elif message.author in team_des_joueurs: # and message.channel in info_de_partie[num_team(message)]['allowed_channel']
 
             if message.content.startswith('!armes'):
                 texte = boutique_d_armes(message)
@@ -219,6 +222,39 @@ def equipement(message):
     """
     return info_de_partie[num_team(message)][message.author][16]
 
+def texte_dons(message):
+    """
+    Si une classe n'est pas précisée dans le message :
+        renvoie un texte d'aide.
+
+    Si, une classe est précisée :
+        parcours toutes les listes de classes pour trouver une occurence
+        Renvoie un texte avec les dons de la classe.
+
+    Si une classe est précisée mais qu'elle ne correspond à rien:
+        renvoie un texte d'erreur/aide. 
+    """
+    cmd = message.content.split(":")
+    texte = ""
+    index = ""
+
+    try:
+        dons = cmd[1].strip(" ").lower()
+    except IndexError:
+        texte += "Quelle classe t'intéresse ?\n"
+        texte += "> !dons:nécromancien.ne"
+        return texte
+
+    for i in range(len(toutes_classes)):
+        for j in range(len(toutes_classes[i])):
+            if dons == toutes_classes[i][j]:
+                for k, v in dons_par_classes[j].items():
+                    texte += "__" + k.capitalize() + "__" + " : " + v + "\n\n"
+
+                return texte
+
+    return "je ne connais pas cette classe.\n> !classes"
+    
 
 def attaque_arme(message, categorie):
     """
@@ -340,7 +376,7 @@ def liste_d_armes(mot_cle):
 
         for k, v in armes_armures[i].items():
             if mot_cle in k or mot_cle in v[0] or mot_cle in v[-3] or mot_cle in v[-2] or mot_cle in str(v[-1]):
-                trouvaille += k.capitalize() + " : "
+                trouvaille += "**" + k.capitalize() + " : **"
                 for f in range(len(v)-3):
                     trouvaille += str(v[f][0]) + v[f][1] + v[f][2] + ".\n"
                 trouvaille += "Utilisable " + v[-3] + ", " + v[-2] + " : " + str(v[-1]) + " PA.\n\n"
@@ -756,6 +792,7 @@ def texte_pj(message):
     pj.set_cmd_texte(message)
     pj.set_param_identite()
     pj.set_particularites()
+    pj.set_don()
     pj.stat_prioritaire_de_classe()
     pj.set_points_de_vie_maximum()
     
