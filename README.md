@@ -49,3 +49,7 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - Les achats sont soit autorisés soit interdits ;
 
 - ajout d'attributs de personnage.
+
+13/06/20 :
+
+- début de la fonction de combat : les joueurs/joueuses peuvent faire un jet de toucher avec une arme en leur possession. Les dés seront lancés avec le bonus de la stat appropriée.
