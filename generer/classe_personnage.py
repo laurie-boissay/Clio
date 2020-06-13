@@ -29,12 +29,12 @@ class Personnage:
 		self.classe_indice = None
 
 		self.carac = {
-			"Force" : 0,
-			"Constitution" : 0,
-			"Dextérité" : 0,
-			"Intelligence" : 0,
-			"Sagesse" : 0,
-			"Charisme" : 0,
+			"force" : 0,
+			"constitution" : 0,
+			"dextérité" : 0,
+			"intelligence" : 0,
+			"sagesse" : 0,
+			"charisme" : 0,
 			}
 
 		self.defense = 10
@@ -80,6 +80,8 @@ class Personnage:
 					self.genre = couple[1].lower()
 				elif couple[0] == "classe":
 					self.classe = couple[1].lower()
+				elif couple[0] == "don":
+					self.don = couple[1].lower()
 	
 
 	def set_particularites(self):
@@ -131,6 +133,19 @@ class Personnage:
 		else:
 			self.pronom = "Iel"
 
+
+	def set_don(self):
+
+		liste_dons_classe = []
+		for i in range(len(toutes_classes)):
+			for j in range(len(toutes_classes[i])):
+				if self.classe == toutes_classes[i][j]:
+					for k, v in dons_par_classes[j].items():
+						liste_dons_classe.append(k)
+		
+		if self.don == "" or self.don not in liste_dons_classe:
+			self.don = liste_dons_classe[randrange(len(liste_dons_classe))]
+
 		
 	def stat_prioritaire_de_classe(self):
 		"""
@@ -173,6 +188,7 @@ class Personnage:
 		commande = "prénom=" + self.prenom + ", "
 		commande += "classe=" + self.classe + ", "
 		commande += "genre=" + self.genre + ", "
+		commande += "don=" + self.don + ", "
 		self.commande_pj += commande
 
 
@@ -180,12 +196,12 @@ class Personnage:
 		#nom_joueur_id : ["nom_perso",F,Co,D,I,S,Ch,def,PV_max,PV,PA,xp,classe,genre,don,[sac],[équipé]],
 		commande = ":" + self.prenom + ":"
 
-		commande += str(self.carac["Force"]) + ","
-		commande += str(self.carac["Constitution"]) + ","
-		commande += str(self.carac["Dextérité"]) + ","
-		commande += str(self.carac["Intelligence"]) + ","
-		commande += str(self.carac["Sagesse"]) + ","
-		commande += str(self.carac["Charisme"]) + ","
+		commande += str(self.carac["force"]) + ","
+		commande += str(self.carac["constitution"]) + ","
+		commande += str(self.carac["dextérité"]) + ","
+		commande += str(self.carac["intelligence"]) + ","
+		commande += str(self.carac["sagesse"]) + ","
+		commande += str(self.carac["charisme"]) + ","
 		commande += str(self.defense) + ","
 		commande += str(self.vie_max) + ","
 		commande += str(self.vie_max) + ","
@@ -200,7 +216,7 @@ class Personnage:
 
 
 	def set_points_de_vie_maximum(self):
-		self.vie_max += self.carac["Constitution"]
+		self.vie_max += self.carac["constitution"]
 		
 
 	def afficher_personnage(self):
@@ -219,6 +235,8 @@ class Personnage:
 		"\nPrénom : " , self.prenom,
 		"\nGenre : " , self.genre,
 		"\nClasse : " , self.classe,
+		"\nPV max : " , str(self.vie_max),
+		"\nDon : " , self.don,
 		"\n\n"
 		]
 
@@ -234,6 +252,7 @@ class Personnage:
 		text_a_afficher += "\n\n"
 		text_a_afficher += "```!classes```Affiche les classes disponibles.\n"
 		text_a_afficher += "```!genres```Affiche les genres qui influencent le prénom.\n"
+		text_a_afficher += "```!dons:" + self.classe + "```Affiche les dons disponibles.\n"
 		text_a_afficher += "\n\n*Personnalise ton personnage :*\n"
 		text_a_afficher += "*(Tu peux laisser certains paramètres vides, je les remplirai.)*\n"
 		text_a_afficher += self.commande_pj
