@@ -93,7 +93,7 @@ class Personnage:
 		Un pronom est définit en fonction du genre du personnage.
 		"""
 		if self.genre == "":
-			self.genre = genre[randrange(len(genre))]
+			self.genre = genre_pers[randrange(len(genre_pers))]
 
 		if self.classe == "" or (self.classe not in classe_m and self.classe not in classe_f and self.classe not in classe):
 			self.classe_indice = randrange(len(classe))
