@@ -55,3 +55,15 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - début de la fonction de combat : les joueurs/joueuses peuvent faire un jet de toucher avec une arme en leur possession. Les dés sont lancés avec le bonus de la stat appropriée ;
 
 - chaque classe de personnage à trois dons. Les PJ sont générés avec un don aléatoire ou choisit de leur classe. Les dons sont expliqués grâce à la commande !dons.
+
+14/06/20 :
+
+- réorganisation du code ;
+
+- import des fichiers de Calliope ;
+
+- début d'implémentation de la génération de quêtes. Le commanditaire est généré en premier en fonction des choix des joueurs. Le texte de contexte est implémenté ;
+
+- les personnages peuvent équiper et déséquiper jusqu'à 3 pièces d'armure. Les stat des personnages sont modifiés en fonction de l'armure ;
+
+- les commandes utilisables en jeu ne sont lues que dans le canal définit comme autorisé.
