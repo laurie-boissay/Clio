@@ -53,13 +53,13 @@ armes_armures = [
 	},
 
 	{# comme armures
-	"armure de plate" : [[2, " en ", "défense"], [-1, " en ", "dextérité"], "équipée", "comme armure", 40],
-	"armure de cuir" : [[1, " en ", "défense"], "équipée", "comme armure", 40],
-	"harnais souple" : [[1, " en ", "défense"], "équipé", "comme armure", 40],
-	"robe magique" : [[1, " en ", "défense"], "équipée", "comme armure", 40],
-	"vêtements élégants" : [[1, " en ", "défense"], "équipés", "comme armure", 40],
-	"robe de bure" : [[1, " en ", "défense"], "équipée", "comme armure", 40],
-	"pagne" : [[1, " en ", "défense"], "équipé", "comme armure", 40],
+	"armure de plate" : [[2, " en ", "défense"], [-1, " en ", "dextérité"], "équipée", "comme pièce d'armure (3 slots)", 40],
+	"armure de cuir" : [[1, " en ", "défense"], "équipée", "comme pièce d'armure (3 slots)", 40],
+	"harnais souple" : [[1, " en ", "défense"], "équipé", "comme pièce d'armure (3 slots)", 40],
+	"robe magique" : [[1, " en ", "défense"], "équipée", "comme pièce d'armure (3 slots)", 40],
+	"vêtements élégants" : [[1, " en ", "défense"], "équipés", "comme pièce d'armure (3 slots)", 40],
+	"robe de bure" : [[1, " en ", "défense"], "équipée", "comme pièce d'armure (3 slots)", 40],
+	"pagne" : [[1, " en ", "défense"], "équipé", "comme pièce d'armure (3 slots)", 40],
 	},
 ]
 

@@ -6,7 +6,9 @@ classes_et_carac_associee = {
 	"guerrier" : "force",
 	"guerrière" : "force",
 	"mage" : "intelligence",
+	"nécromancienne" : "intelligence",
 	"nécromancien.ne" : "intelligence",
+	"nécromancien" : "intelligence",
 	"paladin" : "charisme",
 	"paladin.e" : "charisme",
 	"paladine" : "charisme",
@@ -182,7 +184,7 @@ carac = [
 	"charisme",
 	]
 
-genre = [
+genre_pers = [
 	"féminin",
 	"masculin",
 	"androgyne",
