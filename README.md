@@ -67,3 +67,11 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - les personnages peuvent équiper et déséquiper jusqu'à 3 pièces d'armure. Les stat des personnages sont modifiés en fonction de l'armure ;
 
 - les commandes utilisables en jeu ne sont lues que dans le canal définit comme autorisé.
+
+15/06/20 :
+
+- ajout d'attributs pour les PJ : nom, race, pronom, age ;
+
+- modification du système de "sauvegarde", les attributs des personnages sont sauvegardés dans un dictionnaire plutôt que dans une liste ;
+
+- modifiction du texte de contexte de quête. Ajout de détails sur le commanditaire.
