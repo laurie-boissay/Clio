@@ -1,3 +1,21 @@
+race_pers = [
+	"humain",
+	"nain",
+	"elfe",
+	"orc",
+	"demi-orc",
+	"halfelin",
+	"gnome",
+	"demi-elfe"
+	]
+
+age_pers = [
+	"agé.e",
+	"très agé.e",
+	"jeune",
+	"très jeune"
+	]
+
 classes_et_carac_associee = {
 	"barbare" : "force",
 	"barde" : "charisme",
@@ -190,7 +208,7 @@ genre_pers = [
 	"androgyne",
 	]
 
-prenoms_f = [
+prenoms_humains_f = [
 	"An",
 	"Annia",
 	"Alaina",
@@ -221,7 +239,9 @@ prenoms_f = [
 	"Télinne",
 	"Véronnelle",
 	"Wendoline",
+	]
 
+prenoms_nains_f = [
 	"Astrid",
 	"Arnhild",
 	"Berthild",
@@ -238,8 +258,10 @@ prenoms_f = [
 	"Klothild",
 	"Sigrid",
 	"Strida",
-	"Diesa",
-	
+	"Diesa"
+	]
+
+prenoms_elfes_f = [
 	"Elberenh",
 	"Elidhwen",
 	"Ellenùviel",
@@ -261,8 +283,10 @@ prenoms_f = [
 	"Ninielle",
 	"Nolwaënn",
 	"Mirielle",
-	"Keltienn",
-	
+	"Keltienn"
+	]
+
+prenoms_orcs_f = [
 	"Aoga",
 	"Bargula",
 	"Caroka",
@@ -288,8 +312,10 @@ prenoms_f = [
 	"Ownka",
 	"Shautha",
 	"Vola",
-	"Volen",
-	
+	"Volen"
+	]
+
+prenoms_halfelins_f = [
 	"Eglantine",
 	"Lila",
 	"Jacinthe",
@@ -299,8 +325,10 @@ prenoms_f = [
 	"Pâquerette",
 	"Prune",
 	"Jasmine",
-	"Cerise",
-	
+	"Cerise"
+	]
+
+prenoms_gnomes_f = [
 	"Thérèse",
 	"Huguette",
 	"Rose",
@@ -310,10 +338,10 @@ prenoms_f = [
 	"Denise",
 	"Germaine",
 	"Charlotte",
-	"Gyslaine",
+	"Gyslaine"
 	]
 
-prenoms_m = [
+prenoms_humains_m = [
 	"Adalrik",
 	"Arn",
 	"Bernulf",
@@ -346,7 +374,9 @@ prenoms_m = [
 	"Tao",
 	"Thorsten",
 	"Yu",
-	
+	]
+
+prenoms_nains_m = [
 	"Gloin",
 	"Krorin",
 	"Thorin",
@@ -357,8 +387,10 @@ prenoms_m = [
 	"Guerann",
 	"Korik",
 	"Barrend",
-	"Brottor",
-	
+	"Brottor"
+	]
+
+prenoms_elfes_m = [
 	"Arwendil",
 	"Caëldwendir",
 	"Eldwyndor",
@@ -380,8 +412,10 @@ prenoms_m = [
 	"Haëldion",
 	"Laurendor",
 	"Morwendir",
-	"Raëldirion",
-	
+	"Raëldirion"
+	]
+
+prenoms_orcs_m = [
 	"Aog",
 	"Bargul",
 	"Carok",
@@ -408,8 +442,10 @@ prenoms_m = [
 	"Krusk",
 	"Ront",
 	"Shump",
-	"Thokk",
-	
+	"Thokk"
+	]
+
+prenoms_halfelins_m = [
 	"Bill",
 	"Bern",
 	"Don",
@@ -427,8 +463,10 @@ prenoms_m = [
 	"Mike",
 	"Polo",
 	"Sam",
-	"Titi",
+	"Titi"
+	]
 
+prenoms_gnomes_m = [
 	"Albert",
 	"Edgard",
 	"Eustache",
@@ -439,61 +477,109 @@ prenoms_m = [
 	"Bertrand",
 	"Louis",
 	"Guy",
-	"Guilbert",
+	"Guilbert"
 	]
 
-prenoms_a = [
-	"An",
-	"Ngoc",
-	"Oumou",
-	"Arnhild",
-	"Brynild",
-	"Eldrid",
-	"Ermenhild",
-	"Grimhild",
-	"Gudrun",
-	"Sigrid",
-	"Elberenh",
-	"Elidhwen",
-	"Ellenùviel",
-	"Maerwen",
-	"Nennenvaël",
-	"Ninwelotë",
-	"Aëldill",
-	"Aluinill",
-	"Aliann",
-	"Lùthill",
-	"Nolwaënn",
-	"Keltienn",
-	"Baggi",
-	"Emen",
-	"Engong",
-	"Myev",
-	"Neega",
-	"Ovak",
-	"Volen",
-	"Bernulf",
-	"Ferwin",
-	"Jin",
-	"Ketil",
-	"Lassana",
-	"Sékou",
-	"Arwendil",
-	"Caëldwendir",
-	"Elberenhdir",
-	"Elendur",
-	"Laurelith",
-	"Linaëndir",
-	"Aëdin",
-	"Farg",
-	"Lug",
-	"Urdu",
-	"Dench",
-	"Feng",
-	"Gell",
-	"Bern",
-	"Eckel",
-	"Litle",
-	"Luky",
-	"Sam",
+noms_nains = [
+	"Mâchefer",
+	"Briseroc",
+	"Forgefer",
+	"Tranchetroll",
+	"Cassegranit",
+	"Briselame",
+	"Ecu-de-chêne",
+	"Marteleur",
+	"Peau-de-pierre"
 	]
+
+noms_humains = [
+	"Dubois",
+	"Dupont",
+	"Deschamps",
+	"Boulanger",
+	"Charpentier",
+	"nacunoeil",
+	"Dumoulin",
+	"Marin",
+	"Dubourg",
+	"Marchand",
+	"Tavernier",
+	"Lenoir",
+	"Legrand",
+	"Lepetit",
+	"Legros"
+	]
+
+noms_halfelins =[
+	"Sur-le-pont",
+	"Dubois",
+	"Sous-colline",
+	"Moulinbas",
+	"Verte-prairie",
+	"Du-hautchamp",
+	"Rivière",
+	"Du-lac-aux-joncs",
+	"Feuilledethé",
+	"SousRameau"
+	]
+
+noms_gnomes = [
+	"Blumdenplick",
+	"Dimtigballen",
+	"Vondemacht",
+	"Kolerbiltag",
+	"Wurmenship",
+	"Aliserwilp",
+	"Uhldimmerstelp",
+	"Molkenpulp",
+	"Bimpbelinedor"
+	]
+
+noms_elfes = [
+	"Amastacia",
+	"Fleur-d'Etoile",
+	"Amakiir",
+	"Fleur-de-Gemme",
+	"Galanodel",
+	"Murmure-de-Lune",
+	"Holimion",
+	"Rosée-de-Diamant",
+	"Liadon",
+	"Feuille-d'Argent",
+	"Meliamne",
+	"Pied-de-Chêne",
+	"Naïlo",
+	"Brise-Nocturne",
+	"Siannodel",
+	"Ruisseau-de-Lune",
+	"Ilphukiir",
+	"Bouton-de-Gemme",
+	"Xiloscient",
+	"Pétale-d'Or"
+	]
+
+carac_mots = [
+	"p_prénom",
+	"p_nom",
+	"p_pronom",
+	"p_age",
+	"p_race",
+	"p_classe",
+	"p_genre",
+	"p_don",
+]
+
+carac_entiers = [
+	"p_force",
+	"p_constitution",
+	"p_dextérité",
+	"p_intelligence",
+	"p_sagesse",
+	"p_charisme",
+
+	"p_défense",
+	"p_PV max",
+	"p_PV",
+	"p_PA",
+	"p_XP",
+]
