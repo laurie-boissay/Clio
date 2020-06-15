@@ -162,6 +162,41 @@ def texte_classes():
     return texte
 
 
+def texte_races():
+    """
+    Renvoie un texte : la liste des classes implémentées.
+    """
+    texte = "Les races qui influencent le prénom :\n\n"
+
+    for i in range(len(race_pers)):
+        texte += race_pers[i] + "\n"
+
+
+    texte += "\nVous pouvez choisir une autre race. Dans ce cas, le prénom et le nom de votre"
+    texte += " personnage seront tirés au sort dans les prénoms et noms des races implémentées."
+
+    return texte
+
+
+def texte_genres():
+    """
+    Renvoie un texte : la liste des classes implémentées.
+    """
+    texte = "Les genres qui influencent le prénom :\n\n"
+    
+    genre_pers.remove("androgyne")
+    
+    for i in range(len(genre_pers)):
+        texte += genre_pers[i] + "\n"
+
+    genre_pers.append("androgyne")
+
+    texte += "\nVous pouvez choisir un autre genre tel que androgyne ou autre."
+    texte += "\nDans ce cas, le prénom de votre personnage sera typé masculin ou féminin."
+
+    return texte
+
+
 def texte_dons(message):
     """
     Si une classe n'est pas précisée dans le message :
@@ -207,28 +242,7 @@ def texte_info():
     ]
     return texte[0]
 
-def texte_genres(message):
-	"""
-	Return un texte avec la liste des genres implémentés.
-	"""
-	texte = ""
-	for i in range(len(genre_pers)):
-		texte += genre_pers[i] + ", "
 
-	return texte
 
-def texte_pj(message):
-    """
-    Génère un personnage joueur.
-    Renvoie un texte : une commande.
-    """
-    pj = Personnage()
-    pj.set_cmd_texte(message)
-    pj.set_param_identite()
-    pj.set_particularites()
-    pj.set_don()
-    pj.stat_prioritaire_de_classe()
-    pj.set_points_de_vie_maximum()
-    
-    return pj.afficher_personnage()
+
 

@@ -41,8 +41,9 @@ def texte_roder(message):
     quete = Quete()
     quete.set_commanditaire_exclu(la_ligue_de_la_lumiere)
     commanditaire = quete.get_commanditaire()
+    pnj_commanditaire = quete.generer_pnj_light()
     contexte_pioche = contexte_quetes_illegales[randrange(len(contexte_quetes_illegales))]
-    texte = phrases_contexte(contexte_pioche, commanditaire)
+    texte = phrases_contexte(contexte_pioche, commanditaire, pnj_commanditaire)
 
     return texte
 
@@ -51,7 +52,8 @@ def texte_taverne(message):
     quete = Quete()
     quete.set_commanditaire_exclu(la_ligue_de_l_ombre)
     commanditaire = quete.get_commanditaire()
-    texte = phrases_contexte("tavernier", commanditaire)
+    pnj_commanditaire = quete.generer_pnj_light()
+    texte = phrases_contexte("tavernier", commanditaire, pnj_commanditaire)
 
     return texte
 
@@ -60,7 +62,8 @@ def texte_tableau(message):
     quete = Quete()
     quete.set_commanditaire_exclu(la_ligue_de_l_ombre)  
     commanditaire = quete.get_commanditaire()
-    texte = phrases_contexte("annonce", commanditaire)
+    pnj_commanditaire = quete.generer_pnj_light()
+    texte = phrases_contexte("annonce", commanditaire, pnj_commanditaire)
     
     return texte
 
@@ -69,14 +72,16 @@ def texte_annonces(message):
     quete = Quete()
     quete.set_commanditaire_exclu(la_ligue_de_l_ombre)
     commanditaire = quete.get_commanditaire()
-    texte = phrases_contexte("accostés", commanditaire)
+    pnj_commanditaire = quete.generer_pnj_light()
+    texte = phrases_contexte("accostés", commanditaire, pnj_commanditaire)
     
     return texte
 
 
 def texte_primes(message):
     quete = Quete()
-    texte = phrases_contexte("prime", "La caserne")
+    pnj_commanditaire = quete.generer_pnj_light()
+    texte = phrases_contexte("prime", "La caserne", pnj_commanditaire)
     
     return texte
 

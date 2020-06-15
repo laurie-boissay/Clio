@@ -54,8 +54,11 @@ def all_users_cmd(message, client):
 
         elif message.content.startswith('!genres'):
                 # Renvoi la liste des genres qui influencent la génération d'un prénom.
-                texte = texte_genres(message)
-                canal = message.author
+                texte = texte_genres()
+
+        elif message.content.startswith('!races'):
+                # Renvoi la liste des genres qui influencent la génération d'un prénom.
+                texte = texte_races()
 
         elif message.content.startswith('!dons'):
             texte = texte_dons(message)
