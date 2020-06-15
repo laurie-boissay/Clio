@@ -63,10 +63,31 @@ class Quete:
 				self.commanditaire = "une personne"
 
 
+
 	def get_commanditaire(self):
 
 		return self.commanditaire
 
+
+	def generer_pnj_light(self) :
+		"""
+		Assigne un metier a un personnage en fonction du commanditaire.
+
+		Grâce à la classe personnage, génère un personnage qui exerce
+		ce métier.
+
+		Renvoie un dictionnaire contenant assez d'attributs pour décrire
+		le personnage généré.  
+		"""
+		perso = Personnage()
+
+		metier = poste_dans(self.commanditaire)
+		perso.set_type_pers("PNJ")
+		perso.set_metier(metier)
+		perso.set_particularites()
+		
+		return perso.pnj_light()
+		
 
 
 """
@@ -97,11 +118,6 @@ def combler_les_manques(self):
 
 	if self.recompense == "":
 		self.recompense = recompense_de_quete(self.pnj_commanditaire, self.commanditaire, self.pnj_aide)
-
-
-
-
-
 
 
 def nomer_commanditaire(self):
@@ -140,23 +156,7 @@ def set_aide(self):
 		self.aide =  "Les héros se voient proposer une aide matérielle."
 
 
-def generer_pnj_light(self) :
-	
-	#Assigne un metier a un personnage en fonction du commanditaire.
 
-	#Grâce à la classe personnage, génère un personnage qui exerce
-	#ce métier.
-
-	#Renvoie un dictionnaire contenant assez d'attributs pour décrire
-	#le personnage généré.  
-	
-
-	perso = Personnage()
-
-	metier = poste_dans(self.commanditaire)
-	perso.set_metier(metier)
-	perso.set_particularites()
-	return perso.pnj_light()
 
 
 def assembler_texte_de_quete(self):

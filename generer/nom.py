@@ -22,6 +22,121 @@ def nom_auberge() :
 	Pioche un nom + un ajectif pour former un nom d'auberge.
 	"""
 	return auberge_nom[randrange(len(auberge_nom))] + " " + auberge_adj[randrange(len(auberge_adj))]
+
+
+def nom_pers(genre, race) :
+	"""
+	Donne un nom au personnage selon :
+		- son genre ;
+		- sa race.
+
+	Particularité pour le genre androgyne ou autre genre définit par l'utilisateur,
+	un genre pour le nom est pioché aléatoirement et la fonction boucle sur elle même.
+
+	Enfin, quand l'utilisateur à définit une autre race que celle listée dans race_pers,
+	une race est piochée pour son nom de personnage.
+	"""
+	if genre == "féminin" :
+		if race == "humains" or race == "humain" or race == "demi-elfes" or race == "demi-elfe":
+			nom = noms_humains[randrange(len(noms_humains))]
+		elif race == "nains" or race == "nain" :
+			nom = noms_nains[randrange(len(noms_nains))]
+		elif race == "elfes" or race == "elfe":
+			nom = noms_elfes[randrange(len(noms_elfes))]
+		elif race == "orcs" or race == "orc" or race == "demi-orcs" or race == "demi-orc": 
+			nom = "du-clan-de-" + prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
+		elif race == "halfelins" or race =="halfelin":
+			nom = noms_halfelins[randrange(len(noms_halfelins))]
+		elif race == "gnomes" or race =="gnome":
+			nom = noms_gnomes[randrange(len(noms_gnomes))]			
+		else : # Autres races
+			race = race_pers[randrange(len(race_pers))]
+			return nom_pers(genre, race)
+
+	elif genre == "masculin" :
+		if race == "humains" or race == "humain" or race == "demi-elfes" or race == "demi-elfe":
+			nom = noms_humains[randrange(len(noms_humains))] 
+		elif race == "nains" or race == "nain":
+			nom = noms_nains[randrange(len(noms_nains))]
+		elif race == "elfes" or race == "elfe" :
+			nom = noms_elfes[randrange(len(noms_elfes))]
+		elif race == "orcs" or race == "orc" or race == "demi-orcs" or race == "demi-orc":
+			nom = "du-clan-de-" + prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
+		elif race == "halfelins" or race == "halfelin":
+			nom = noms_halfelins[randrange(len(noms_halfelins))]
+		elif race == "gnomes" or race =="gnome":
+			nom = noms_gnomes[randrange(len(noms_gnomes))]
+		else : # Autres races
+			race = race_pers[randrange(len(race_pers))]
+			return nom_pers(genre, race)
+
+	else : # autres genres
+		genre_pers.remove("androgyne")
+		genre = genre_pers[randrange(len(genre_pers))]
+		genre_pers.append("androgyne")
+		
+		return nom_pers(genre, race)
+	
+	return nom
+
+
+def prenom_pers(genre, race) :
+	"""
+	Donne un prénom au personnage selon :
+		- son genre ;
+		- sa race.
+
+	Particularité pour le genre androgyne ou autre genre définit par l'utilisateur,
+	un genre pour le prénom est pioché aléatoirement et la fonction boucle sur elle même.
+
+	Enfin, quand l'utilisateur à définit une autre race que celle listée dans race_pers,
+	une race est piochée pour son prénom de personnage.
+	"""
+	if genre == "féminin" :
+		if race == "humains" or race == "humain":
+			prenom = prenoms_humains_f[randrange(len(prenoms_humains_f))]
+		elif race == "nains" or race == "nain" :
+			prenom = prenoms_nains_f[randrange(len(prenoms_nains_f))]
+		elif race == "elfes" or race == "elfe" or race == "demi-elfes" or race == "demi-elfe":
+			prenom = prenoms_elfes_f[randrange(len(prenoms_elfes_f))]
+		elif race == "orcs" or race == "orc" or race == "demi-orcs" or race == "demi-orc": 
+			prenom =  prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
+		elif race == "halfelins" or race =="halfelin":
+			prenom = prenoms_halfelins_f[randrange(len(prenoms_halfelins_f))]
+		elif race == "gnomes" or race =="gnome":
+			prenom = prenoms_gnomes_f[randrange(len(prenoms_gnomes_f))]			
+		else : # Autres races
+			race = race_pers[randrange(len(race_pers))]
+			return prenom_pers(genre, race)
+
+	elif genre == "masculin" :
+		if race == "humains" or race == "humain":
+			prenom = prenoms_humains_m[randrange(len(prenoms_humains_m))] 
+		elif race == "nains" or race == "nain":
+			prenom = prenoms_nains_m[randrange(len(prenoms_nains_m))]
+		elif race == "elfes" or race == "elfe"  or race == "demi-elfes" or race == "demi-elfe":
+			prenom = prenoms_elfes_m[randrange(len(prenoms_elfes_m))]
+		elif race == "orcs" or race == "orc" or race == "demi-orcs" or race == "demi-orc":
+			prenom = prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
+		elif race == "halfelins" or race == "halfelin":
+			prenom = prenoms_halfelins_m[randrange(len(prenoms_halfelins_m))]
+		elif race == "gnomes" or race =="gnome":
+			prenom = prenoms_gnomes_m[randrange(len(prenoms_gnomes_m))]
+		else : # Autres races
+			race = race_pers[randrange(len(race_pers))]
+			return prenom_pers(genre, race)
+
+	else : # autres genres
+		genre_pers.remove("androgyne")
+		genre = genre_pers[randrange(len(genre_pers))]
+		genre_pers.append("androgyne")
+		return prenom_pers(genre, race)
+	
+	return prenom
+
+
+
+
 '''
 def nom_navire() :
 	"""
@@ -70,78 +185,6 @@ def zone():
 	return zone.get_zone_nom() + "." + zone.get_commande() + "\n"
 
 
-def nom_pers(genre, race) :
-	"""
-	Donne un nom et un prénom au personnage selon :
-		- son genre ;
-		- sa race.
-
-	Particularité pour les demi-orcs qui ont soit un couple prénom-nom humain ou orc.
-	Le choix est aléatoire.
-
-	Autre particularité pour le genre androgyne ou autre genre définit par l'utilisateur,
-	un genre pour le nom est pioché aléatoirement et la fonction boucle sur elle même.
-
-	Enfin, quand l'utilisateur à définit une autre race que celle listée dans pers_race,
-	une race est piochée pour son nom de personnage.
-	"""
-	if genre == "féminin" :
-		if race == "humains" or race == "humain":
-			nom = prenoms_humains_f[randrange(len(prenoms_humains_f))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "nains" or race == "nain" :
-			nom = prenoms_nains_f[randrange(len(prenoms_nains_f))] + " " + noms_nains[randrange(len(noms_nains))]
-		elif race == "elfes" or race == "elfe":
-			nom = prenoms_elfes_f[randrange(len(prenoms_elfes_f))] + " " + noms_elfes[randrange(len(noms_elfes))]
-		elif race == "orcs" or race == "orc":
-			nom = prenoms_orcs_f[randrange(len(prenoms_orcs_f))] + " du-clan-de-" + prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
-		elif race == "demi-elfes" or race == "demi-elfe":
-			nom = prenoms_elfes_f[randrange(len(prenoms_elfes_f))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "halfelins" or race =="halfelin":
-			nom = prenoms_halfelins_f[randrange(len(prenoms_halfelins_f))] + " " + noms_halfelins[randrange(len(noms_halfelins))]
-		elif race == "gnomes" or race =="gnome":
-			nom = prenoms_gnomes_f[randrange(len(prenoms_gnomes_f))] + " " +noms_gnomes[randrange(len(noms_gnomes))]
-		elif race == "demi-orcs" or race == "demi-orc":
-			race = race_nom[randrange(len(race_nom))]
-			if race == "orcs" or race == "orc":
-				nom = prenoms_orcs_f[randrange(len(prenoms_orcs_f))] + " du-clan-de-" + prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
-			else : #nom et prénom humain
-				nom = prenoms_humains_f[randrange(len(prenoms_humains_f))] + " " + noms_humains[randrange(len(noms_humains))]
-		else : # Autres races
-			race = pers_race[randrange(len(pers_race))]
-			
-			return nom_pers(genre, race)
-
-	elif genre == "masculin" :
-		if race == "humains" or race == "humain":
-			nom = prenoms_humains_m[randrange(len(prenoms_humains_m))] + " " + noms_humains[randrange(len(noms_humains))] 
-		elif race == "nains" or race == "nain":
-			nom = prenoms_nains_m[randrange(len(prenoms_nains_m))] +" "+ noms_nains[randrange(len(noms_nains))]
-		elif race == "elfes" or race == "elfe" :
-			nom = prenoms_elfes_m[randrange(len(prenoms_elfes_m))] + " " + noms_elfes[randrange(len(noms_elfes))]
-		elif race == "orcs" or race == "orc":
-			nom =prenoms_orcs_m[randrange(len(prenoms_orcs_m))] + " du-clan-de-" + prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
-		elif race == "demi-elfes" or race == "demi-elfe":
-			nom = prenoms_elfes_m[randrange(len(prenoms_elfes_m))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "halfelins" or race == "halfelin":
-			nom = prenoms_halfelins_m[randrange(len(prenoms_halfelins_m))] + " " + noms_halfelins[randrange(len(noms_halfelins))]
-		elif race == "gnomes" or race =="gnome":
-			nom = prenoms_gnomes_m[randrange(len(prenoms_gnomes_m))] + " " +noms_gnomes[randrange(len(noms_gnomes))]
-		elif race == "demi-orcs" or race == "demi-orc":
-			race = race_nom[randrange(len(race_nom))]
-			if race == "orcs" or race == "orc":
-				nom = prenoms_orcs_m[randrange(len(prenoms_orcs_m))] + " du-clan-de-" + prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
-			else : #nom et prénom humain
-				nom = prenoms_humains_m[randrange(len(prenoms_humains_m))] + " " + noms_humains[randrange(len(noms_humains))]
-		else : # Autres races
-			race = pers_race[randrange(len(pers_race))]
-			return nom_pers(genre, race)
-
-	else : # autres genres
-		genre = genre_nom[randrange(len(genre_nom))]
-		
-		return nom_pers(genre, race)
-	
-	return nom
 
 
 def metier_pers() :

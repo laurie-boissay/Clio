@@ -32,7 +32,7 @@ def gen_perso_def_metier(metier):
 	perso.set_metier(metier)
 	personne = perso.pnj_light()
 	return description(personne)
-
+'''
 
 def poste_dans(structure):
 	"""
@@ -67,7 +67,7 @@ def poste_dans(structure):
 
 	return metier
 
-
+'''
 def genere_affiche_perso_light() :
 	"""
 	Génère un personnage.
@@ -291,55 +291,53 @@ def recompense_de_quete(pnj_commanditaire, commanditaire, pnj_aide):
 	return recompense
 
 '''
-def phrases_contexte(contexte_pioche, commanditaire):
+def phrases_contexte(contexte_pioche, commanditaire, pnj_commanditaire):
 	"""
 	Renvoie le texte du contexte de quête.
 	"""	
 	# quêtes illégales
 	if contexte_pioche == "Pst":
 		texte = '"Pst, pst !"\nDans une ruelle sombre, une personne encapuchonnée essaie '
-		texte += "d'attirer l'attention des héros.\n\nC'est "
+		texte += "d'attirer votre attention."
 
 	elif contexte_pioche == "personne ivre":
-		texte = "Une personne visiblement ivre bouscule les héros, "
+		texte = "Une personne visiblement ivre vous bouscule, puis "
 		texte +="s'excuse en rotant bruyament et repart en titubant.\n"
-		texte += "Plus tard, un des héros retrouve dans une de ses poches "
-		texte += "une note griffonnée lui indiquant de se rendre "
+		texte += "Plus tard, vous retrouvez dans une de vos poches "
+		texte += "une note griffonnée vous indiquant de vous rendre "
 		texte += lieu_discret[randrange(len(lieu_discret))] + " à midi."
-		texte += "\n\nLes héros pourront y rencontrer "
 
 	elif contexte_pioche == "lettre":
-		texte = "Une lettre a été glissée pendant la nuit, sous la porte de chambre des héros.\n"
-		texte += "Ils sont invités à se rendre ce soir à l'auberge : " + nom_auberge() + "."
-		texte += "\n\nLes héros pourront y rencontrer "
+		texte = "Une lettre a été glissée pendant la nuit, sous votre porte de chambre.\n"
+		texte += "Vous êtes invités à vous rendre ce soir à l'auberge : " + nom_auberge() + ".\n"
+		texte += "Demandez " + pnj_commanditaire["prénom"] + ".\""
 
 	elif contexte_pioche == "garçon":
-		texte = "Un enfant cours vers le groupe de héros, il est tout sourire.\n"
+		texte = "Un jeune garçon cours vers vous, il est tout sourire.\n"
 		texte += '"La personne là-bas" dit-il en montrant une silhouette en train de disparaître.\n'
 		texte += '"Elle a dit de vous donner ça."\n'
 		texte += "Il tend une lettre à personne la plus charismatique du groupe et attend quelques minutes...\n"
 		texte += '"Elle a dit aussi que vous allez me donner une pièce parce-que vous êtes des hérOs !"\n\n'
 		texte += "La lettre contient le message suivant : \n\"Rendez-vous ce soir à la taverne : "
-		texte +=  nom_auberge() + ", demandez des bières rousses.\""
-		texte += "\n\nLes héros rencontreront alors "
+		texte +=  nom_auberge() + ", demandez " + pnj_commanditaire["prénom"] + ".\""
 
 	elif contexte_pioche == "fille":
-		texte = "Une enfant cours vers le groupe de héros, elle tribuche quelques-fois.\n"
+		texte = "Une petite fille cours vers vous, elle tribuche quelques-fois.\n"
 		texte += '"La personne là-bas" dit-elle en montrant une silhouette vague appuyée contre un mur.\n'
 		texte += '"Elle a dit que vous devez la suivre parce-que elle a du t\'avail pour vous."\n'
 		texte += "La silhouette se redresse lentement, épouste ses vêtements et s'en va."
-		texte += "\n\nAprès une filature plutôt facile, les héros rencontrent "
 
 	elif contexte_pioche == "mendiant.e":
 		texte = '"M\'sieurs Dames, une p\'tite pièce contre une info ?"\n'
 		texte += '"Y\'a quelqu\'un la d\'dans qui cherche des types d\'vot\' genre pour un p\'tit boulot."'
-		texte += "\n\nLe mendiant désigne une porte dérobée et leur décrit "
+		texte += "\n\nLe mendiant désigne une porte dérobée.\n\"Si ça vous intéresse demandez "
+		texte +=  + pnj_commanditaire["prénom"] + ".\""
 
 	elif contexte_pioche == "contact":
 		texte = "Un contact informe les héros d'une opportinitée : "
 		texte += '"Un travail bien payé, dans vos cordes mais j\'peux pas trop en dire plus."\n'
-		texte += '"Si ça vous interresse, je vous mets en contact."'
-		texte += "\n\nIl les mène jusqu'à l'auberge " + nom_auberge() + " et leur présente "
+		texte += '"Si ça vous interresse, allons à l\'auberge ' + nom_auberge() + ' que je vous présente '
+		texte +=  + pnj_commanditaire["prénom"] + ".\""
 
 	# Quêtes légales
 
@@ -350,23 +348,23 @@ def phrases_contexte(contexte_pioche, commanditaire):
 			commanditaire = "l'auberge : " + nom_taverne
 		
 		texte = "Devant la taverne : " + nom_taverne + ", sur un grand tableau en bois, "
-		texte += "les héros remarquent une annonce :\n"
+		texte += "vous remarquez une annonce :\n"
 		texte += "\"Recrute mercenaires pour une mission urgente. Présentez-vous dans " + commanditaire
-		texte += ".\"\n\nEn s'y rendant, les héros pourront rencontrer "
+		texte +=  " et demandez " + pnj_commanditaire["prénom"] + ".\""
 
 	elif contexte_pioche == "accostés":
-		texte = "Les héros sont accostés dans la rue par "
+		texte = "Vous êtes accostés dans la rue par " + pnj_commanditaire["prénom"] + "."
 
 	elif contexte_pioche == "tavernier":
-		texte = "Alors que les héros sont à la taverne, le tavernier s'approche et leur dit :\n"
+		texte = "Alors que vous êtes à la taverne, le tavernier s'approche et vous dit :\n"
 		texte += '"Y\'a quelqu\'un à cette table là-bas qui cherche à recruter un groupe gaillard'
 		texte += ' un peu dans l\'genre du votre."'
-		texte += "\n\nLes héros peuvent s'approcher de "
+		texte += "\n\nVous pouvez vous approcher de " + pnj_commanditaire["prénom"] + "."
 
 	elif contexte_pioche == "prime":
 		texte = "Dans toute la ville des affiches sont placardées :\n\"" + commanditaire.capitalize()
-		texte += " recrute des chasseurs de primes. Présentez-vous le matin.\"\n\n"
-		texte += "Les héros pourront demander à voir "
+		texte += " recrute des chasseurs de primes. Présentez-vous le matin et demandez "
+		texte += pnj_commanditaire["prénom"] + ".\""
 		
 	return texte
 

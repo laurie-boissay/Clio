@@ -17,137 +17,189 @@ def nom_perso(message):
     Renvoie le nom du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][0]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_nom"]
 
-def force(message):
+def prenom_perso(message):
     """
-    Renvoie (int) la force du personnage associé au joueur/
+    Renvoie le prénom du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][1]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_prénom"]
 
-def constitution(message):
+def pronom_perso(message):
     """
-    Renvoie (int) la constitution du personnage associé au joueur/
+    Renvoie le pronom du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][2]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_pronom"]
 
-def dexterite(message): # initiative = dex
+def race_perso(message):
     """
-    Renvoie (int) la dextérité du personnage associé au joueur/
+    Renvoie la race du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][3]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_race"]
 
-def modifier_dexterite(message, valeur):
+def age_perso(message):
     """
-    Modifie la valeur de dextérité.
-    """
-    info_de_partie[num_team(message)][message.author][3] += valeur
-
-def intelligence(message):
-    """
-    Renvoie (int) l'intelligence du personnage associé au joueur/
+    Renvoie l'age du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][4]
-
-def sagesse(message):
-    """
-    Renvoie (int) la sagesse du personnage associé au joueur/
-    à la joueuse.
-    """
-    return info_de_partie[num_team(message)][message.author][5]
-
-def charisme(message):
-    """
-    Renvoie (int) le charisme du personnage associé au joueur/
-    à la joueuse.
-    """
-    return info_de_partie[num_team(message)][message.author][6]
-
-def defense(message):
-    """
-    Renvoie (int) le charisme du personnage associé au joueur/
-    à la joueuse.
-    """
-    return info_de_partie[num_team(message)][message.author][7]
-
-def modifier_defense(message, valeur): # initiative = dex
-    """
-    Modifie la valeur de défense.
-    """
-    info_de_partie[num_team(message)][message.author][7] += valeur
-
-def vie_max(message):
-    """
-    Renvoie (int) le maximum de points de vie du personnage 
-    associé au joueur/à la joueuse.
-    """
-    return info_de_partie[num_team(message)][message.author][8]
-
-def pv(message):
-    """
-    Renvoie (int) les points de vie actuels du personnage 
-    associé au joueur/à la joueuse.
-    """
-    return info_de_partie[num_team(message)][message.author][9]
-
-def argent(message):
-    """
-    Renvoie (int) l'argent du personnage associé au joueur/
-    à la joueuse.
-    """
-    return info_de_partie[num_team(message)][message.author][10]
-
-def modifier_argent(message, montant):
-    """
-    Modifie la valeur de "Argent".
-    """
-    info_de_partie[num_team(message)][message.author][10] += montant
-
-def xp(message):
-    """
-    Renvoie (int) l'expérience du personnage associé au joueur/
-    à la joueuse.
-    """
-    return info_de_partie[num_team(message)][message.author][11]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_age"]
 
 def perso_classe(message):
     """
     Renvoie la classe du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][12]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_classe"]
 
 def genre(message):
     """
     Renvoie le genre du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][13]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_genre"]
 
 def don(message):
     """
     Renvoie le genre du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][14]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_don"]
+
+def force(message):
+    """
+    Renvoie (int) la force du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_force"]
+
+def constitution(message):
+    """
+    Renvoie (int) la constitution du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_constitution"]
+
+def dexterite(message): # initiative = dex
+    """
+    Renvoie (int) la dextérité du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_dextérité"]
+
+def modifier_dexterite(message, valeur):
+    """
+    Modifie la valeur de dextérité.
+    """
+    team = num_team(message)
+    info_de_partie[team][message.author]["p_dextérité"] += valeur
+
+def intelligence(message):
+    """
+    Renvoie (int) l'intelligence du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_intelligence"]
+
+def sagesse(message):
+    """
+    Renvoie (int) la sagesse du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_sagesse"]
+
+def charisme(message):
+    """
+    Renvoie (int) le charisme du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_charisme"]
+
+def defense(message):
+    """
+    Renvoie (int) le charisme du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_défense"]
+
+def modifier_defense(message, valeur): # initiative = dex
+    """
+    Modifie la valeur de défense.
+    """
+    team = num_team(message)
+    info_de_partie[team][message.author]["p_défense"] += valeur
+
+def vie_max(message):
+    """
+    Renvoie (int) le maximum de points de vie du personnage 
+    associé au joueur/à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_PV max"]
+
+def pv(message):
+    """
+    Renvoie (int) les points de vie actuels du personnage 
+    associé au joueur/à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_PV"]
+
+def argent(message):
+    """
+    Renvoie (int) l'argent du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_PA"]
+
+def modifier_argent(message, montant):
+    """
+    Modifie la valeur de "Argent".
+    """
+    team = num_team(message)
+    info_de_partie[team][message.author]["p_PA"] += montant
+
+def xp(message):
+    """
+    Renvoie (int) l'expérience du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_XP"]
 
 def sac(message):
     """
     Renvoie le contenu du sac du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][15]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_sac"]
 
 def equipement(message):
     """
     Renvoie l'équipement du personnage associé au joueur/
     à la joueuse.
     """
-    return info_de_partie[num_team(message)][message.author][16]
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_équipement"]
 
 def num_team(message):
     """
