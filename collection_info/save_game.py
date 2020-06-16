@@ -11,7 +11,14 @@ info_de_partie = [
 
 	achats_autorisés : [nom_joueur_id, nom_joueur_id],					<= Pour la team n° 0 (implémenté)
 	
-	combat_autorisés : [nom_joueur_id, nom_joueur_id],
+	combat_autorisé : [nom_joueur_id, nom_joueur_id],
+
+	quete en cours : {
+		"titre" : "",
+		"decription" : "",
+		"boss" : "",
+		"players" : [nom_joueur_id, nom_joueur_id, nom_joueur_id]
+		}
 
 	nom_joueur_id : {
 		"p_prénom" : "",
