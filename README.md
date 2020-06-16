@@ -75,3 +75,21 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - modification du système de "sauvegarde", les attributs des personnages sont sauvegardés dans un dictionnaire plutôt que dans une liste ;
 
 - modifiction du texte de contexte de quête. Ajout de détails sur le commanditaire.
+
+16/06/20 :
+
+- suppression du système de génération de quête et de zone ;
+
+- début d'un système de génération de donjons ;
+
+- les joueurs/joueuses d'une équipe peuvent générer un seul donjon à la fois ;
+
+- un.e joueur/joueuse peut accepter la quête (le donjon);
+
+- tous les joueurs peuvent rejoindre le combat individuelement ;
+
+- il est possible de refuser la quête si aucun.e joueur/joueuse n'a rejoint le combat ;
+
+- un.e joueur/joueuse peut téléporter le groupe de joueurs/joueuses dans le donjon, les combats sont autorisés pour eux ;
+
+- un.e joueur/joueuse peut se téléporter dans le donjon sile combat a déjà commencé.
