@@ -86,10 +86,10 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 
 - un.e joueur/joueuse peut accepter la quête (le donjon);
 
-- tous les joueurs peuvent rejoindre le combat individuelement ;
+- tou.te.s les joueurs/joueuses peuvent rejoindre le combat individuelement ;
 
 - il est possible de refuser la quête si aucun.e joueur/joueuse n'a rejoint le combat ;
 
-- un.e joueur/joueuse peut téléporter le groupe de joueurs/joueuses dans le donjon, les combats sont autorisés pour eux ;
+- un.e joueur/joueuse peut téléporter le groupe de joueurs/joueuses dans le donjon, les combats sont autorisés pour eux/elles ;
 
-- un.e joueur/joueuse peut se téléporter dans le donjon sile combat a déjà commencé.
+- un.e joueur/joueuse peut se téléporter dans le donjon si le combat a déjà commencé.
