@@ -1,6 +1,12 @@
 
 from collection_de_mots.equipement import *
 
+from collection_info.save_game import *
+
+from generer.personnage import *
+
+
+
 def liste_d_armes(mot_cle):
     """
     Vérifie que le mot_cle est dans la liste des armes et armures.
@@ -33,5 +39,16 @@ def liste_d_armes(mot_cle):
         texte += " Essayez de me décrire ce que vous voulez."
         texte += "\n> !armes:force"
         texte += "\n> !armes:25"
+
+    return texte
+    
+
+def bon_canal(message, texte):
+    try :
+        message.channel.name == info_de_partie[num_team(message)]["allowed_channel"]
+
+    except AttributeError:
+        texte = "Tu n'es pas dans le bon canal, rends toi dans : "
+        texte += info_de_partie[num_team(message)]["allowed_channel"] + "."
 
     return texte

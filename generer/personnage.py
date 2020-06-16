@@ -230,7 +230,7 @@ def texte_possessions(message, indice):
         for i in range(len(objet)):
             texte += "\n"
             if indice == "equipement":
-                texte += str(i+1) + "/3 pièce.s d'"
+                texte += str(i+1) + "/3 pièce.s : "
             texte += objet[i]
         texte += "\n"
 

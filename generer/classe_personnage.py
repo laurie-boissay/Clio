@@ -2,7 +2,6 @@ from random import randrange
 
 
 from collection_de_mots.personnage import *
-from collection_de_mots.metiers import *
 
 from generer.nom import *
 
@@ -36,7 +35,6 @@ class Personnage:
 
 		self.classe = ""
 		self.classe_indice = None
-		self.metier = ""
 
 		self.carac = {
 			"force" : 0,
@@ -116,11 +114,8 @@ class Personnage:
 		
 		self.set_genre()
 		self.set_race()
-
-		if self.type_pers == "PJ":
-			self.set_classe()
-			self.set_don()
-
+		self.set_classe()
+		self.set_don()
 		self.set_prenom()
 		self.set_pronom()
 		self.set_nom()
@@ -324,30 +319,31 @@ class Personnage:
 		return text_a_afficher
 
 
-	def set_metier(self, metier):
-		self.metier = metier
-
-
 	def set_type_pers(self, type_pers):
 		self.type_pers = type_pers
 
 
-	def pnj_light(self):
-		"""
-		Renvoie les info d'un PNJ light.
-		"""
-		pnj_light = {
-		"prénom" : self.prenom,
-		"nom" : self.nom,
-		"age" : self.age,
-		"race" : self.race,
-		"genre" : self.genre,
-		"métier" :  self.metier,
-		"pronom" : self.pronom,
-		}
-		
-		return pnj_light
+	def set_total_points(self, nb_players):
+		self.total_points = 12 * nb_players
 
+
+	def set_valeur_max(self, nb_players):
+		self.valeur_max = 3 * nb_players
+
+
+	def get_personnage(self):
+		personnage = {
+			"genre" : self.genre(),
+			"race" : self.race(),
+			"classe" : self.classe(),
+			"don" : self.don(),
+			"prénom" : self.prenom(),
+			"pronom" : self.pronom(),
+			"nom" : self.nom(),
+			"age" : self.age(),
+		}
+
+		return personnage
 
 
 

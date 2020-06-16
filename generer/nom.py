@@ -1,27 +1,12 @@
 from random import randrange
 
-
-#from collection_de_mots.quetes import *
-from collection_de_mots.zone import *
 from collection_de_mots.personnage import *
-from collection_de_mots.activites import *
-from collection_de_mots.trucs import *
-from collection_de_mots.metiers import *
-
-from generer.classe_zone import Zone
 
 """
 Génère des noms de lieux, d'objets, d'animaux, de personnes, de métiers.
 	
 Décrit une zone de type ville ou village.
 """
-
-
-def nom_auberge() :
-	"""
-	Pioche un nom + un ajectif pour former un nom d'auberge.
-	"""
-	return auberge_nom[randrange(len(auberge_nom))] + " " + auberge_adj[randrange(len(auberge_adj))]
 
 
 def nom_pers(genre, race) :
@@ -138,6 +123,13 @@ def prenom_pers(genre, race) :
 
 
 '''
+def nom_auberge() :
+	"""
+	Pioche un nom + un ajectif pour former un nom d'auberge.
+	"""
+	return auberge_nom[randrange(len(auberge_nom))] + " " + auberge_adj[randrange(len(auberge_adj))]
+
+
 def nom_navire() :
 	"""
 	Pioche un nom + un ajectif pour former un nom de navire.
