@@ -2,7 +2,6 @@
 Les commandes du personnage.
 """
 
-
 from collection_de_mots.equipement import *
 from collection_de_mots.personnage import *
 
@@ -97,7 +96,6 @@ def texte_qui(message):
     Personnalise le texte en fonction du genre du personnage.
     """
     if message.author in team_des_joueurs:
-        player = False
 
         sac_du_perso = texte_possessions(message, "sac")
         equipement_du_perso = texte_possessions(message, "equipement")
@@ -124,19 +122,33 @@ def texte_qui(message):
         texte += "Son sac contient : " + sac_du_perso + "et " + pronom_perso(message).lower()
         texte += " porte : " + equipement_du_perso
 
-        if equipement_du_perso == "rien " and sac_du_perso != "rien ":
-            texte += "\n\n*Tu dois t'équiper de ton armure pour bénéficier de son bonus :*\n"
-            texte += "> !équiper:armure de cuir"
+        if sac_du_perso != "rien ":
+            armure = ""
+            for i in range(len(sac(message))):
+                if sac(message)[i] in armes_armures[2]:
+                    armure = sac(message)[i]
+
+                if armure != "":
+                    texte += "\n\n*Tu dois t'équiper de ton armure pour bénéficier de son bonus :*\n"
+                    texte += "> !équiper:" + armure
         
-        elif equipement_du_perso != "rien ":
-            texte += "\n*Tu peux déséquiper ton armure :*\n"
-            texte += "> !déséquiper:armure de cuir"
+        if equipement_du_perso != "rien ":
+            armure = ""
+            for i in range(len(equipement(message))):
+                armure = equipement(message)[i]
+                texte += "\n*Tu peux déséquiper ton armure :*\n"
+                texte += "> !déséquiper:" + armure
 
     else:
         texte = message.author.name + ", tu n'as pas encore de personnage enregistré."
         texte += "\n> !aide"
 
     return texte
+
+    """
+    elif objet not in armes_armures[2]:
+            texte += "Cet objet : " + objet + " n'est pas une armure."
+    """
 
 
 def achat(message):

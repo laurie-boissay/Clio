@@ -67,7 +67,8 @@ def texte_initialiser(message):
         info_de_partie.append({})
         info_de_partie[team_number]["allowed_channel"] = message.channel.name
         info_de_partie[team_number]["achats_autorisés"] = []
-        info_de_partie[team_number]["combat_autorisés"] = []
+        info_de_partie[team_number]["combat_autorisé"] = []
+        info_de_partie[team_number]["quête en cours"] = {}
     
     except AttributeError:
         texte = "La commande :```!initialiser```doit être tapée dans le canal ou va se jouer la partie.\n"

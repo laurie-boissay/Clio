@@ -1,7 +1,8 @@
 from commandes.personnages import *
 from commandes.combats import *
 from commandes.guide_aide import *
-from commandes.quetes import *
+from commandes.quete import *
+
 
 from generer.demarrage import *
 from generer.personnage import *
@@ -28,6 +29,7 @@ def all_users_cmd(message, client):
         elif message.content.startswith('!aide'): 
             # Renvoi un message d'aide.
             texte = texte_aide()
+            canal = message.author
 
         elif message.content.startswith('!initialiser'):
             texte = texte_initialiser(message)
@@ -55,68 +57,72 @@ def all_users_cmd(message, client):
         elif message.content.startswith('!genres'):
                 # Renvoi la liste des genres qui influencent la génération d'un prénom.
                 texte = texte_genres()
+                canal = message.author
 
         elif message.content.startswith('!races'):
                 # Renvoi la liste des genres qui influencent la génération d'un prénom.
                 texte = texte_races()
+                canal = message.author
 
         elif message.content.startswith('!dons'):
             texte = texte_dons(message)
+            canal = message.author
 
         elif message.content.startswith('!qui'):
             texte = texte_qui(message)
-
-        elif message.content.startswith('!quête'): # A déplacer plus bas après les tests.
-                texte = texte_quete(message)
-
-        elif message.content.startswith('!roder'): # A déplacer plus bas après les tests.
-                texte = texte_roder(message)
-
-        elif message.content.startswith('!taverne'): # A déplacer plus bas après les tests.
-                texte = texte_taverne(message)
-
-        elif message.content.startswith('!tableau'): # A déplacer plus bas après les tests.
-                texte = texte_tableau(message)
-
-        elif message.content.startswith('!annonces'): # A déplacer plus bas après les tests.
-                texte = texte_annonces(message)
-
-        elif message.content.startswith('!primes'): # A déplacer plus bas après les tests.
-                texte = texte_primes(message)        
+            canal = message.author
 
         elif message.author in team_des_joueurs:
 
             if message.content.startswith('!armes'):
                 texte = boutique_d_armes(message)
+                canal = message.author
 
-            try :
-                if message.channel.name == info_de_partie[num_team(message)]["allowed_channel"]:
+            elif message.content.startswith('!achat'):
+                texte = achat(message)
+                canal = message.author
 
-                    if message.content.startswith('!joue'):
-                        texte = texte_joue(message)
+            elif message.content.startswith('!équiper'):
+                texte = equiper(message)
+                canal = message.author
 
-                    elif message.content.startswith('!achat'):
-                        texte = achat(message)
+            elif message.content.startswith('!déséquiper'):
+                texte = desequiper(message)
+                canal = message.author
+            
+            elif message.content.startswith('!joue'):
+                texte = texte_joue(message)
+                texte = bon_canal(message, texte)
 
-                    elif message.content.startswith('!équiper'):
-                        texte = equiper(message)
+            elif message.content.startswith('!quête'):
+                texte = texte_quete(message)
+                texte = bon_canal(message, texte)
 
-                    elif message.content.startswith('!déséquiper'):
-                        texte = desequiper(message)
+            elif message.content.startswith('!refuser'):
+                texte = texte_refuser(message)
+                texte = bon_canal(message, texte)
 
-                    elif message.content.strip("!").lower() in armes_2_mains:
-                        texte = attaque_arme(message, "deux mains")
+            elif message.content.startswith('!accepter'):
+                texte = texte_accepter(message)
+                texte = bon_canal(message, texte)
 
-                    elif message.content.strip("!").lower() in armes_1_main:
-                        texte = attaque_arme(message, "une main")
+            elif message.content.startswith('!téléporter'):
+                texte = texte_teleporter(message)
+                texte = bon_canal(message, texte)
 
-            except AttributeError:
-                texte = "Tu n'es pas dans le bon canal, rends toi dans : "
-                texte += info_de_partie[num_team(message)]["allowed_channel"] + "."
-                
+            elif message.content.strip("!").lower() in armes_2_mains:
+                texte = attaque_arme(message, "deux mains")
+                texte = bon_canal(message, texte)
 
+            elif message.content.strip("!").lower() in armes_1_main:
+                texte = attaque_arme(message, "une main")
+                texte = bon_canal(message, texte)
+            
                 
     return canal, texte
+
+
+
 
 
 

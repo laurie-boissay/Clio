@@ -3,7 +3,10 @@ Les fonctions qui permettent de résoudre un combat.
 """
 
 from generer.combat import *
+
 from collection_de_mots.equipement import *
+
+from collection_info.save_game import *
 
 
 def attaque_arme(message, categorie):
@@ -20,6 +23,9 @@ def attaque_arme(message, categorie):
             si oui : lancer les dégâts selon la catégorie.
             si non : texte, conséquences ?
     """
+    if message.author not in info_de_partie[num_team(message)]["combat_autorisé"]:
+        return "Vous ne pouvez pas combatre ici."
+
     cmd = message.content.strip("!")
     arme = cmd.strip(" ").lower()
     
