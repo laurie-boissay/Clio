@@ -11,7 +11,7 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 
 - elle est déjà capable d'associer un pseudo discord avec tout un personnage et un numéro de team ; 
 
-- les commandes de jeux ne sont autorisées que dans le canal choisit par le créateur de la partie ; <= annulé
+- les commandes de jeux ne sont autorisées que dans le canal choisit par le créateur de la partie ;
 
 - pour certaines commandes, elle répond seulement en message privé pour ne pas poluer le canal de discussion.
 
@@ -93,3 +93,13 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - un.e joueur/joueuse peut téléporter le groupe de joueurs/joueuses dans le donjon, les combats sont autorisés pour eux/elles ;
 
 - un.e joueur/joueuse peut se téléporter dans le donjon si le combat a déjà commencé.
+
+17/06/20 :
+
+- ajout d'éléments pour la génération du donjon : titre, boss, difficulté, nb de salle, description... ;
+
+- un.e joueur/joueuse sans personnage empêche le groupe de se téléporter dans le donjon, so pseudo steam est affiché ;
+
+- les combats ne sont plus autorisés à la téléportation ;
+
+- création d'un grand nombre d'alias pour pointer les éléments de la liste de sauvegarde.
