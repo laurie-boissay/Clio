@@ -99,7 +99,7 @@ navire_adj = [
 lieu_quete_nom = [
 	"le temple",
 	"la tombe",
-	"les cavernes",
+	"la caverne",
 	"le chateau",
 	"la pyramide",
 	"le couvent",
@@ -109,13 +109,12 @@ lieu_quete_nom = [
 	"l'antre",
 	]
 
-lieu_quete_adj = [
-	"du roi maudit",
-	"la reine rouge",
-	"sombre.s",
-	"hanté.e.s",
-	"maudit.e.s",
-	"du dragon blanc",
+boss_adj = [
+	"maudit.e",
+	"rouge",
+	"sombre",
+	"maudit.e",
+	"fou/folle",
 	]
 
 ext_nom = [

@@ -152,16 +152,16 @@ dons_par_classes = [
 
 	#mage
 	{
-	"cible" : "l'attention des ennemis est attirée vers le personnage designé.",
+	"cible" : "l'attention des ennemis est attirée vers le personnage allié designé.",
 	"ombre" : "les ennemis oublient provisoirement le/la mage.",
 	"sommeil" : "1dX ennemis (X=intelligence) doivent resister ou s'endormir.",
 	},
 
-	#mage
+	#nécromancien.ne
 	{
 	"drain" : "vole 1dX PV à sa cible (X=intelligence).",
-	"réanimation" : "a X chances/10 de relever un mort (X=intelligence) + 1 au toucher par morts-vivants.\n(passif).",
-	"animation" : "a X chances/10 de relever un mort (X=intelligence) + 1 dégâts par morts-vivants.\n(passif).",
+	"réanimation" : "a X chances/10 de relever un mort qui a X PV (X=intelligence) + 1 au toucher par morts-vivants.\n(passif).",
+	"animation" : "a X chances/10 de relever un mort qui a X PV (X=intelligence) + 1 dégâts par morts-vivants.\n(passif).",
 	},
 
 	#paladin.e
@@ -182,7 +182,7 @@ dons_par_classes = [
 	{
 	"animal" : "augmente de 1 les chances de toucher des membres du groupe pour la durée du combat.\n(passif).",
 	"visée" : "augmente de 3 sa dextérité pour la durée du combat.\n(non cumulable).",
-	"reconnaissance" : "joue en premier/première en cas d'embuscade.\n(passif)",
+	"cible" : "l'attention des ennemis est attirée vers le personnage allié designé.",
 	},
 
 	#voleur/voleuse
