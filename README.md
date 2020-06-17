@@ -74,7 +74,7 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 
 - modification du système de "sauvegarde", les attributs des personnages sont sauvegardés dans un dictionnaire plutôt que dans une liste ;
 
-- modifiction du texte de contexte de quête. Ajout de détails sur le commanditaire.
+- modification du texte de contexte de quête. Ajout de détails sur le commanditaire.
 
 16/06/20 :
 
@@ -98,7 +98,7 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 
 - ajout d'éléments pour la génération du donjon : titre, boss, difficulté, nb de salle, description... ;
 
-- un.e joueur/joueuse sans personnage empêche le groupe de se téléporter dans le donjon, so pseudo steam est affiché ;
+- un.e joueur/joueuse sans personnage dans le groupe empêche le groupe de se téléporter dans le donjon, son pseudo Discord est affiché ;
 
 - les combats ne sont plus autorisés à la téléportation ;
 
