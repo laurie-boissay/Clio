@@ -1,6 +1,7 @@
 from random import randrange
 
 from collection_de_mots.personnage import *
+from collection_de_mots.noms import *
 
 """
 Génère des noms de lieux, d'objets, d'animaux, de personnes, de métiers.
@@ -120,6 +121,11 @@ def prenom_pers(genre, race) :
 	return prenom
 
 
+def objet_precieux() :
+	"""
+	Pioche un nom + un ajectif pour former un nom d'objet précieux.
+	"""
+	return objet_nom[randrange(len(objet_nom))] + " " + objet_adj[randrange(len(objet_adj))]
 
 
 '''
@@ -136,11 +142,6 @@ def nom_navire() :
 	"""
 	return navire_nom[randrange(len(navire_nom))] + " " + navire_adj[randrange(len(navire_adj))]
 
-def objet_precieux() :
-	"""
-	Pioche un nom + un ajectif pour former un nom d'objet précieux.
-	"""
-	return objet_nom[randrange(len(objet_nom))] + " " + objet_adj[randrange(len(objet_adj))]
 
 def lieu_quete() :
 	"""

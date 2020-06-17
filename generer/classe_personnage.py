@@ -333,14 +333,14 @@ class Personnage:
 
 	def get_personnage(self):
 		personnage = {
-			"genre" : self.genre(),
-			"race" : self.race(),
-			"classe" : self.classe(),
-			"don" : self.don(),
-			"prénom" : self.prenom(),
-			"pronom" : self.pronom(),
-			"nom" : self.nom(),
-			"age" : self.age(),
+			"genre" : self.genre,
+			"race" : self.race,
+			"classe" : self.classe,
+			"don" : self.don,
+			"prénom" : self.prenom,
+			"pronom" : self.pronom,
+			"nom" : self.nom,
+			"age" : self.age,
 		}
 
 		return personnage

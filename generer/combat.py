@@ -6,6 +6,38 @@ from generer.personnage import *
 from random import randint
 
 
+def find_player_charac_name(message, member):
+        for k, v in info_de_partie[num_team(message)].items():
+            if member == k :
+                return v["p_prénom"]
+
+def players(message):
+    # Renvoie la liste des joueurs.
+    return info_de_partie[num_team(message)]["quête en cours"]["players"]
+
+
+def boss(message):
+    #dictionnaire contenant : genre, race, classe, don, prénom, pronom, nom, age
+    return info_de_partie[num_team(message)]["quête en cours"]["boss"]
+
+
+def difficulte(message):
+    #dictionnaire contenant : niveau, nb salles, récompense, multiplicateur.
+    return info_de_partie[num_team(message)]["quête en cours"]["difficulté"]
+
+
+def combat(message):
+    return info_de_partie[num_team(message)]["combat_autorisé"]
+
+
+def achats(message):
+    return info_de_partie[num_team(message)]["achats_autorisés"]
+
+
+def quete_en_cours(message):
+    return info_de_partie[num_team(message)]["quête en cours"]
+
+
 def resolution_combat(message):
     """
     """
@@ -15,6 +47,9 @@ def resolution_combat(message):
     # appelle roll pour lancer les degats
     texte = ""
     return texte
+
+def generer_ennemis(message):
+    info_de_partie[num_team(message)]["quête en cours"]["ennemis"] = []
     
 
 def associer_stat(message, stat):
