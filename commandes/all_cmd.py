@@ -68,7 +68,7 @@ def all_users_cmd(message, client):
             texte = texte_dons(message)
             canal = message.author
 
-        elif message.content.startswith('!qui'):
+        elif message.content.startswith('!qui') and len(message.content) == 4:
             texte = texte_qui(message)
             canal = message.author
 
@@ -108,6 +108,14 @@ def all_users_cmd(message, client):
 
             elif message.content.startswith('!téléporter'):
                 texte = texte_teleporter(message)
+                texte = bon_canal(message, texte)
+
+            elif message.content.startswith('!quitter'):
+                texte = texte_quitter(message)
+                texte = bon_canal(message, texte)
+
+            elif message.content.startswith('!journal'):
+                texte = texte_journal(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.strip("!").lower() in armes_2_mains:

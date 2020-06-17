@@ -174,7 +174,7 @@ def achat(message):
         marchandise = message.content.split(":")
         
         if len(marchandise) == 1 or marchandise[1] == "":
-            texte = "Pafait, quel est le nom exact de cet objet que vous souhaitez acheter ?\n"
+            texte = "Parfait, quel est le nom exact de cet objet que vous souhaitez acheter ?\n"
             texte += "> !achat:nom précis de l'objet"
         else:
             objet = marchandise[1].strip(" ")
@@ -190,7 +190,7 @@ def achat(message):
                             texte += ".\n" + str(argent(message)) + " - " + str(v[-1]) + " = "
                             modifier_argent(message, -v[-1])
                             texte += str(argent(message))
-                            texte += "\nEt elle est maintenant à vous. Bonne journée"
+                            texte += "\net elle est maintenant à vous. Bonne journée"
                             sac(message).append(k)
                         
                         else:

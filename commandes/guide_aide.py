@@ -25,7 +25,7 @@ def texte_aide():
     "Créer une nouvelle partie."
     "\nTu dois écrire cette commande dans le canal ou va se dérouler la partie."
     "\nTu vas recevoir en message privé une commande."
-    "\n Il faudra l'envoyer en en message privé aux autres joueurs et "
+    "\nIl faudra l'envoyer en en message privé aux autres joueurs et "
     "\nla copier-coller aussi en message privé mais dans mon canal."
 
     "\n\n```!quête```"
@@ -33,7 +33,6 @@ def texte_aide():
 
     "\n\n```!qui```"
     'Permet de vérifer que ton perso est bien "enregistré".'
-    "\nDans cet exemple 0 est le numéro de team."
     ]
     return texte[0]
 
