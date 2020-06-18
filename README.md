@@ -103,3 +103,7 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - les combats ne sont plus autorisés à la téléportation ;
 
 - création d'un grand nombre d'alias pour pointer les éléments de la liste de sauvegarde.
+
+18/06/20 :
+
+- génération d'un groupe d'ennemis pour une salle en fonction du niveau des personnages joueurs et de la difficulté du donjon. Le nombre d'ennemis et leur niveau varient. Les ennemis non boss sont générés sur le même principe que les PJ.
