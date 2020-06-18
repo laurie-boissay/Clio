@@ -582,4 +582,5 @@ carac_entiers = [
 	"p_PV",
 	"p_PA",
 	"p_XP",
+	"p_niveau",
 ]
