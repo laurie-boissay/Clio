@@ -7,11 +7,13 @@ info_de_partie = []
 """
 info_de_partie = [
 	{
-	allowed_channel : channel.name,
+	"allowed_channel" : channel.name,
 
-	achats_autorisés : [nom_joueur_id, nom_joueur_id],					<= Pour la team n° 0
+	"achats_autorisés" : [nom_joueur_id, nom_joueur_id],					<= Pour la team n° 0
 	
-	combat_autorisé : [nom_joueur_id, nom_joueur_id],
+	"combat_autorisé" : [nom_joueur_id, nom_joueur_id],
+
+	"niveau des joueurs" : [],
 
 	quete en cours : {
 		"titre" : "",
@@ -40,7 +42,7 @@ info_de_partie = [
 				"race" : "",
 				"don" : "",
 				"force" : X,
-				"constitution" : X,			<= ennemi 0 # A implémenter
+				"constitution" : X,			<= ennemi 0
 				"dextérité" : X,
 				"intelligence" : X,
 				"sagesse" : X,
@@ -72,6 +74,7 @@ info_de_partie = [
 		"p_PV" : X,
 		"p_PA" : X,
 		"p_XP" : X,
+		"p_niveau" : X,
 		"p_sac" : [],
 		"p_équipement" : [],
 		},
@@ -96,6 +99,7 @@ info_de_partie = [
 		"p_PV" : X,
 		"p_PA" : X,
 		"p_XP" : X,
+		"p_niveau" : X,
 		"p_sac" : [],
 		"p_équipement" : [],
 		},
