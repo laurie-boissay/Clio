@@ -32,97 +32,116 @@ def all_users_cmd(message, client):
             canal = message.author
 
         elif message.content.startswith('!initialiser'):
+            # Créer une nouvelle partie, renvoie un texte
             texte = texte_initialiser(message)
             canal = message.author
 
         elif message.content.startswith('!rejoindre'):
+            # La personne envoie message.author et un n° de team dans la liste team_des_joueurs.
+            # Renvoie un texte.
             texte = texte_rejoindre(message)
             canal = message.author
 
         elif message.content.startswith('!pj'):
-            # génère un PJ, renvoi un texte.
+            # Génère un PJ, renvoi un texte.
             texte = texte_pj(message)
             canal = message.author
 
         elif message.content.startswith('!info'):
-            # Renvoi le lien vers mon Github.
+            # Renvoie le lien vers mon Github.
             texte = texte_info()
             canal = message.author
 
         elif message.content.startswith('!classes'):
-            # génère un PJ, renvoi un texte.
+            # Renvoie un texte : la liste des classes et la caractéristique prio associée.
             texte = texte_classes()
             canal = message.author
 
         elif message.content.startswith('!genres'):
-                # Renvoi la liste des genres qui influencent la génération d'un prénom.
+                # Renvoie la liste des genres qui influencent la génération d'un prénom.
                 texte = texte_genres()
                 canal = message.author
 
         elif message.content.startswith('!races'):
-                # Renvoi la liste des genres qui influencent la génération d'un prénom.
+                # Renvoie la liste des genres qui influencent la génération d'un prénom.
                 texte = texte_races()
                 canal = message.author
 
         elif message.content.startswith('!dons'):
+            # Renvoie la liste des dons.
             texte = texte_dons(message)
             canal = message.author
 
         elif message.content.startswith('!qui') and len(message.content) == 4:
+            # Renvoie un résumé d personnage.
             texte = texte_qui(message)
             canal = message.author
 
         elif message.author in team_des_joueurs:
+            # Seulement si la personne a rejoint une partie :
 
             if message.content.startswith('!armes'):
+                # Renvoie la liste des armes par mots clés.
                 texte = boutique_d_armes(message)
                 canal = message.author
 
             elif message.content.startswith('!achat'):
+                # Le personnage obtient un objet, perd de l'argent.
                 texte = achat(message)
                 canal = message.author
 
             elif message.content.startswith('!équiper'):
+                # Le personnage s'équipe d'une pièce d'armure.
                 texte = equiper(message)
                 canal = message.author
 
             elif message.content.startswith('!déséquiper'):
+                # Le personnage déséquipe d'une pièce d'armure.
                 texte = desequiper(message)
                 canal = message.author
             
             elif message.content.startswith('!joue'):
+                # La personne enregistre son personnage dans info_de_partie.
                 texte = texte_joue(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.startswith('!quête'):
+                # Génère une quête et la stock dans info_de_partie.
                 texte = texte_quete(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.startswith('!refuser'):
+                # Efface la quête de info_de_partie.
                 texte = texte_refuser(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.startswith('!accepter'):
+                # Ajoute la personne à la liste des joueurs/joueuses participant à la quête.
                 texte = texte_accepter(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.startswith('!téléporter'):
+                # Le groupe participant à la quête ne peut plus faire d'achat, lance le combat.
                 texte = texte_teleporter(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.startswith('!quitter'):
+                # Retire le personnage de la liste des participants à la quête, achat autorisé.
                 texte = texte_quitter(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.startswith('!journal'):
+                # Affiche une description de la quête en cours.
                 texte = texte_journal(message)
                 texte = bon_canal(message, texte)
 
             elif message.content.strip("!").lower() in armes_2_mains:
+                # Le personnage utilise une arme à deux mains.
                 texte = attaque_arme(message, "deux mains")
                 texte = bon_canal(message, texte)
 
             elif message.content.strip("!").lower() in armes_1_main:
+                # Le personnage utilise une arme à une main.
                 texte = attaque_arme(message, "une main")
                 texte = bon_canal(message, texte)
             

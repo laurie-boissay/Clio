@@ -25,6 +25,7 @@ def texte_quete(message):
         texte += refuser + participer + téléporter + journal
 
     else:
+        info_de_partie[num_team(message)]["quête en cours"]["ennemis"] = []
         texte = generer_donjon(message)
         texte += refuser + participer + téléporter
 
@@ -150,7 +151,11 @@ def texte_teleporter(message):
     Chaque personne dans la liste des participants est retirée de la liste
     autorisant les achats.
 
-    Renvoie un texte de confirmation + texte aide
+    Appele la fonction generer_ennemis
+
+    Renvoie un texte de confirmation
+    + description ennemis
+    + aide
     """
     if len(quete_en_cours(message)) == 0 :
         return "Vous n'avez pas de quête en cours."
@@ -172,12 +177,11 @@ def texte_teleporter(message):
             if players(message)[i] == achats(message)[j]:
                 info_de_partie[num_team(message)]["achats_autorisés"].remove(players(message)[i])
 
-        #if info_de_partie[num_team(message)]["quête en cours"]["players"][i] not in info_de_partie[num_team(message)]["combat_autorisé"]:
-            #info_de_partie[num_team(message)]["combat_autorisé"].append(info_de_partie[num_team(message)]["quête en cours"]["players"][i])
-    
-    
+    if len(ennemis_dans_salle(message)) == 0:
+       generer_ennemis(message)
 
-    #texte += Lancer le combat
+    texte += "\n" + texte_decrivant_ennemis(message)
+
     texte += "\n\n*Pour quitter le donjon :*\n> !quitter"
 
     return texte

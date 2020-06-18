@@ -113,13 +113,18 @@ def texte_rejoindre(message):
 
 def boutique_d_armes(message):
     """
-    Vérifie si les achats sont autorisés pour ce personnage.
-        si non, retourne un texte.
-        si oui, vérifie si la demande d'achat précise un objet.
-            si non, demande de préciser avec un texte d'aide.
-            si oui, appelle la fonction liste_d_armes.
+    Vérifie si la personne à un personnage.
+        si non renvoie un texte d'erreur + aide
+        si oui : Vérifie si les achats sont autorisés pour ce personnage.
+            si non, retourne un texte d'erreur.
+            si oui, vérifie si la demande d'achat précise un objet.
+                si non, demande de préciser avec un texte d'aide.
+                si oui, appelle la fonction liste_d_armes.
     """
-    if message.author not in info_de_partie[num_team(message)]["achats_autorisés"]:
+    if message.author not in info_de_partie[num_team(message)]:
+        return "Il te faut d'abord un personnage :\n> !pj"
+
+    elif message.author not in info_de_partie[num_team(message)]["achats_autorisés"]:
         return "Les achats sont autorisés en ville uniquement."
 
     else:
@@ -154,7 +159,7 @@ def texte_classes():
     """
     Renvoie un texte : la liste des classes implémentées.
     """
-    texte = "Les classes implémentées :\n\n"
+    texte = "Les classes implémentées et leur caractéristique prioritaire :\n\n"
     
     for k, v in classes_et_carac_associee.items():
         texte += k + " : " + v + "\n"
@@ -164,7 +169,7 @@ def texte_classes():
 
 def texte_races():
     """
-    Renvoie un texte : la liste des classes implémentées.
+    Renvoie un texte : la liste des races implémentées.
     """
     texte = "Les races qui influencent le prénom :\n\n"
 
@@ -180,7 +185,7 @@ def texte_races():
 
 def texte_genres():
     """
-    Renvoie un texte : la liste des classes implémentées.
+    Renvoie un texte : la liste des genres implémentés.
     """
     texte = "Les genres qui influencent le prénom :\n\n"
     
@@ -217,7 +222,8 @@ def texte_dons(message):
         dons = cmd[1].strip(" ").lower()
     except IndexError:
         texte += "Quelle classe t'intéresse ?\n"
-        texte += "> !dons:nécromancien.ne"
+        texte += "> !dons:nécromancien.ne\n"
+        texte += "> !classes"
         return texte
 
     for i in range(len(toutes_classes)):

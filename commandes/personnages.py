@@ -39,8 +39,6 @@ def texte_joue(message):
     la partie[3] les carac str du personnage.
     la partie[2] concerne les carac entiers ;
     
-
-    
     Autorise message.author a faire des achats.
 
     texte de confirmation/aide.
@@ -103,7 +101,8 @@ def texte_qui(message):
         texte = "Tu joues " + prenom_perso(message)
         texte += " " + nom_perso(message) + " de la race des " + race_perso(message) + "s.\n"
         texte += pronom_perso(message) + " est " + age_perso(message) + ".\n"
-        texte += pronom_perso(message) + " est " + perso_classe(message) + " :\n"
+        texte += pronom_perso(message) + " est " + perso_classe(message)
+        texte += " de niveau " + str(niveau(message)) + " :\n"
         texte += "Force : " +  str(force(message)) + "\n"
         texte += "Constitution : " + str(constitution(message)) + "\n"
         texte += "Dextérité : " + str(dexterite(message)) + "\n"
@@ -144,11 +143,6 @@ def texte_qui(message):
         texte += "\n> !aide"
 
     return texte
-
-    """
-    elif objet not in armes_armures[2]:
-            texte += "Cet objet : " + objet + " n'est pas une armure."
-    """
 
 
 def achat(message):
