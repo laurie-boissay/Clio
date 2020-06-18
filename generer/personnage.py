@@ -1,15 +1,12 @@
+from collection_info.save_game import *
+
+from collection_de_mots.equipement import *
+
 """
 Les méchanismes pour accéder et modifier le personnage.
 
 #nom_joueur_id : ["nom_perso",F,Co,D,I,S,Ch,def,PV_max,PV,PA,xp,classe,genre,don,[sac],[équipé]],
 """
-
-
-
-from collection_info.save_game import *
-
-from collection_de_mots.equipement import *
-
 
 
 def nom_perso(message):
@@ -184,6 +181,14 @@ def xp(message):
     """
     team = num_team(message)
     return info_de_partie[team][message.author]["p_XP"]
+
+def niveau(message):
+    """
+    Renvoie (int) le niveau du personnage associé au joueur/
+    à la joueuse.
+    """
+    team = num_team(message)
+    return info_de_partie[team][message.author]["p_niveau"]
 
 def sac(message):
     """

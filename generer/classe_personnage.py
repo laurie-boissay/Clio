@@ -52,6 +52,7 @@ class Personnage:
 		
 		self.xp = 0
 		self.argent = 100
+		self.niveau = 1
 
 		self.commande_pj = "\n> !pj, "
 		self.commande_save = "\n> !joue"
@@ -116,10 +117,12 @@ class Personnage:
 		self.set_race()
 		self.set_classe()
 		self.set_don()
-		self.set_prenom()
 		self.set_pronom()
-		self.set_nom()
-		self.set_age()
+
+		if self.type_pers == "PJ":
+			self.set_prenom()
+			self.set_nom()
+			self.set_age()
 
 
 	def set_genre(self):
@@ -214,6 +217,7 @@ class Personnage:
 			points_distribues += 1
 
 
+
 	def ajoute_1_dans_carac(self):
 		"""
 		Ajoute 1 point dans une caractéristique aléatoire si valeur_max
@@ -221,7 +225,6 @@ class Personnage:
 
 		Si valeur_max est déjà atteinte, la fonction boucle sur elle même.
 		"""	
-		
 		j = carac[randrange(len(carac))]
 
 		if self.carac[j] < self.valeur_max:
@@ -263,7 +266,8 @@ class Personnage:
 		commande += str(self.vie_max) + ","
 		commande += str(self.vie_max) + ","
 		commande += str(self.argent) + ","
-		commande += str(self.xp)
+		commande += str(self.xp) + ","
+		commande += str(self.niveau)
 
 		self.commande_save += commande
 
@@ -323,12 +327,14 @@ class Personnage:
 		self.type_pers = type_pers
 
 
-	def set_total_points(self, nb_players):
-		self.total_points = 12 * nb_players
+	def set_total_points(self):
+		nb = self.niveau - 1
+		self.total_points = 12 + nb
 
 
-	def set_valeur_max(self, nb_players):
-		self.valeur_max = 3 * nb_players
+	def set_valeur_max(self):
+		nb = self.niveau - 1
+		self.valeur_max = 3 + nb
 
 
 	def get_personnage(self):
@@ -346,4 +352,28 @@ class Personnage:
 		return personnage
 
 
+	def set_niveau(self, niveau):
+		self.niveau = niveau
 
+
+	def get_ennemi(self):
+		personnage = {
+			"genre" : self.genre,
+			"race" : self.race,
+			"classe" : self.classe,
+			"don" : self.don,
+			"pronom" : self.pronom,
+			"PV max : " : self.vie_max,
+			"PV" : self.vie_max,
+			"niveau" : self.niveau,
+			"défense" : self.defense,
+
+			"force" : self.carac["force"],
+			"constitution" : self.carac["constitution"],
+			"dextérité" : self.carac["dextérité"],
+			"intelligence" : self.carac["intelligence"],
+			"sagesse" : self.carac["sagesse"],
+			"charisme" : self.carac["charisme"],
+		}
+
+		return personnage

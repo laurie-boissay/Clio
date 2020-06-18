@@ -34,21 +34,31 @@ def liste_d_armes(mot_cle):
         texte += "Alors, ça vous plaît ?"
         texte += "\n> !achat:épée rutillante"
 
-    if len(texte) > 1999:
+    if len(texte) > 2000:
         texte = "ça prendrait la journée à tout déballer.".capitalize()
         texte += " Essayez de me décrire ce que vous voulez."
-        texte += "\n> !armes:force"
+        texte += "\n> !armes:dextérité"
         texte += "\n> !armes:25"
 
     return texte
     
 
 def bon_canal(message, texte):
-    try :
-        message.channel.name == info_de_partie[num_team(message)]["allowed_channel"]
+    """
+    Vérifie que la commande de jeu tapée par la personne est tapée dans le bon canal.
+        si non : texte aide.
 
+    En cas d'erreur AttributeError la personne est dans le canal message privé de Clio.
+
+    """
+    texte_erreur = "Tu n'es pas dans le bon canal, rends toi dans : "
+    texte_erreur += info_de_partie[num_team(message)]["allowed_channel"] + "."
+
+    try :
+        if message.channel.name != info_de_partie[num_team(message)]["allowed_channel"]:
+            texte = texte_erreur
+            
     except AttributeError:
-        texte = "Tu n'es pas dans le bon canal, rends toi dans : "
-        texte += info_de_partie[num_team(message)]["allowed_channel"] + "."
+        texte = texte_erreur
 
     return texte
