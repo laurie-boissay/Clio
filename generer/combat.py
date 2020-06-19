@@ -148,8 +148,8 @@ def generer_ennemis(message):
             ennemi.set_valeur_max()
             ennemi.stat_prioritaire_de_classe()
             ennemi.set_points_de_vie_maximum()
-
-            defense_ennemi(message)
+            ennemi.set_armure(difficulte(message)["multiplicateur"])
+            ennemi.set_arme()
 
             info_de_partie[num_team(message)]["quête en cours"]["ennemis"].append(ennemi.get_ennemi())
    
@@ -172,9 +172,6 @@ def texte_decrivant_ennemis(message):
         texte += "matricule : **" + str(i+1) + "** "
 
     return texte
-
-def defense_ennemi(message):
-    pass
 
 
 def generer_liste_initiative(message):

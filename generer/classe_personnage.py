@@ -2,6 +2,7 @@ from random import randrange
 
 
 from collection_de_mots.personnage import *
+from collection_de_mots.equipement import *
 
 from generer.nom import *
 
@@ -47,6 +48,8 @@ class Personnage:
 
 		self.defense = 10
 		self.vie_max = 10
+		self.arme = ""
+		self.armure = []
 
 		self.don = ""
 		
@@ -356,6 +359,34 @@ class Personnage:
 		self.niveau = niveau
 
 
+	def set_arme(self):
+		arme = armes_par_classe[self.classe_indice][randrange(len(armes_par_classe[self.classe_indice]))]
+		self.arme = arme
+
+
+	def set_armure(self, multiplicateur):
+		if multiplicateur > 1:
+			armure_par_classe[self.classe_indice].remove("rien")
+
+		for i in range(3):
+			piece_armure = armure_par_classe[self.classe_indice][randrange(len(armure_par_classe[self.classe_indice]))]
+			if piece_armure != "rien":
+				self.armure.append(piece_armure)
+				self.set_defense(piece_armure)
+
+		if multiplicateur > 1:
+			armure_par_classe[self.classe_indice].append("rien")
+		
+
+	def set_defense(self, piece_armure):
+			valeur_def = armes_armures[2][piece_armure][0][0]
+			valeur_dex = armes_armures[2][piece_armure][1][0]
+
+			self.defense += valeur_def
+			if len(armes_armures[2][piece_armure]) > 4:
+				self.carac["dextérité"] -= valeur_dex
+
+
 	def get_ennemi(self):
 		personnage = {
 			"genre" : self.genre,
@@ -367,6 +398,8 @@ class Personnage:
 			"PV" : self.vie_max,
 			"niveau" : self.niveau,
 			"défense" : self.defense,
+			"arme" : self.arme,
+			"armure" : self.armure,
 
 			"force" : self.carac["force"],
 			"constitution" : self.carac["constitution"],
@@ -375,5 +408,5 @@ class Personnage:
 			"sagesse" : self.carac["sagesse"],
 			"charisme" : self.carac["charisme"],
 		}
-
+		print(personnage, "\n\n")
 		return personnage
