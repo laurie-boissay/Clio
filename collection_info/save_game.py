@@ -50,6 +50,8 @@ info_de_partie = [
 				"défense" : X,
 				"PV max" : X,
 				"PV" : X,
+				"armure" : [],
+				"arme" : [],
 				}
 			]
 		}
