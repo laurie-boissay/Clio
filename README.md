@@ -107,3 +107,10 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 18/06/20 :
 
 - génération d'un groupe d'ennemis pour une salle en fonction du niveau des personnages joueurs et de la difficulté du donjon. Le nombre d'ennemis et leur niveau varient. Les ennemis non boss sont générés sur le même principe que les PJ.
+
+
+19/06/20 :
+
+- les ennemis ont une armure correspondant à leur classe et qui modifie leur défense ;
+
+- les ennemis on un set d'armes correspondant à leur classe.
