@@ -180,6 +180,10 @@ def texte_teleporter(message):
     if len(ennemis_dans_salle(message)) == 0:
        generer_ennemis(message)
 
+    #tester si le dernier arrivant est dans la liste d'initiative:
+        #si non, le rajouter à la fin
+        #texte += "Hé machin, tu es en retard ! Tu pourras jouer après tous les autres."
+
     texte += "\n" + texte_decrivant_ennemis(message)
 
     texte += "\n\n*Pour quitter le donjon :*\n> !quitter"

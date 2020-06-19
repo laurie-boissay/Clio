@@ -151,15 +151,3 @@ def all_users_cmd(message, client):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
