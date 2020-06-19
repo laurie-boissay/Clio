@@ -140,7 +140,7 @@ dons_par_classes = [
 	{
 	"ronces" : "chaque ennemis essaie de se dépêtrer pour attaquer ce tour-ci.",
 	"épines" : "chaque ennemi subit 1dX dégâts ce tour-ci (X=sagesse).",
-	"bienfait" : "soigne tous les membres du groupe de x PV (X=sagesse)."
+	"bienfait" : "soigne tous les membres du groupe de x PV (X=sagesse).",
 	},
 
 	#guerrière/guerrier
@@ -189,7 +189,7 @@ dons_par_classes = [
 	{
 	"ombre" : "les ennemis oublient provisoirement le/la voleur/voleuse.",
 	"fourbe" : "inflige X dégâts (X=dextérité) à une cible.",
-	"acide" : "chaque ennemi subit 1dX dégâts ce tour-ci (X=dextérité)."
+	"acide" : "chaque ennemi subit 1dX dégâts ce tour-ci (X=dextérité).",
 	},
 ]
 
