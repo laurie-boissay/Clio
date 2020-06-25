@@ -114,3 +114,8 @@ J'aimerai que Clio soit intelligente et puisse retenir des informations que les 
 - les ennemis ont une armure correspondant à leur classe et qui modifie leur défense ;
 
 - les ennemis on un set d'armes correspondant à leur classe.
+
+
+25/06/20 :
+
+Petite pause dans ce projet, je rejoins le programme OpenClassrooms "Trouvez l'alternance qui vous correspond". Je vais m'y consacrer à plein temps.
